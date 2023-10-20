@@ -1,0 +1,95 @@
+# 使用说明 V3.2.0
+# 1. 使用docker-compose  宿主机不需要配置host来发现
+# 2. 无需修改源码，根目录  docker-compose up 即可
+# 3. 静静等待服务启动
+
+version: '3'
+networks:
+  # 配置 项目的 网络地址 默认网关和子网掩码
+  my_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.19.0.0/16
+
+services:
+  my-civ-eva:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    #    network_mode: "host"
+    container_name: my-civ-eva
+    image: my-civ-eva
+    ports:
+      - "8022:8022"
+    volumes:
+      - /my-civ-eva/docker/app/logs:/my-civ-eva/logs
+    networks:
+      my_network:
+        ipv4_address: 172.19.0.2
+
+
+
+  my-mysql:
+    image: mysql:8.0
+    environment:
+      TZ: Asia/Shanghai
+      #      管理密码
+      MYSQL_ROOT_PASSWORD: aHrN56iE
+      #      开发者账号密码
+      MYSQL_USER: developer
+      MYSQL_PASS: UCKDp836
+      #     指定使用的数据库
+      MYSQL_DATABASE: my_civ_eva_3
+    restart: always
+    container_name: my-mysql
+    ports:
+      - "4000:3306"
+    volumes:
+      #         配置 MYSQL 的数据存储位置
+      - /my-civ-eva/docker/mysql/data:/var/lib/mysql
+      #         配置 MYSQL 的配置文件
+      - /my-civ-eva/docker/mysql/mysql.cnf:/etc/my.cnf
+      #      - 配置 MYSQL 的初始化文件脚本
+      - /my-civ-eva/docker/mysql/init/:/docker-entrypoint-initdb.d/
+    command: --lower_case_table_names=1 --default-authentication-plugin=mysql_native_password
+    networks:
+      my_network:
+        ipv4_address: 172.19.0.3
+
+
+  my-minio:
+    container_name: my-minio
+    image: minio/minio
+    command: server /data --console-address ":9090"
+    restart: always
+    ports:
+      - "4070:9000"
+      - "4090:9090"
+    volumes:
+      - /my-civ-eva/docker/minio/data:/data
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=VchMcN84
+      - SET_CONTAINER_TIMEZONE=true
+      - CONTAINER_TIMEZONE=Asia/Shanghai
+    networks:
+      my_network:
+        ipv4_address: 172.19.0.4
+
+
+  my-redis:
+    image: redis:6.0.5
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /my-civ-eva/docker/redis/data:/data
+    container_name: my-redis
+    command: redis-server --requirepass yG7shqQ9 --appendonly yes
+    ports:
+      - "4030:6379"
+    networks:
+      my_network:
+        ipv4_address: 172.19.0.5

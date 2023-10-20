@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.SitePageMapper">
+
+    <resultMap id="sitePageMap" type="cn.swust.indigo.mce.entity.po.SitePage">
+        <id column="site_id" property="siteId"/>
+        <result column="context" property="context"/>
+    </resultMap>
+    <select id="getContextSite" resultType="cn.swust.indigo.mce.entity.po.ContextSite">
+        SELECT s.site_id,
+               s.name,
+               s.site_py,
+               s.longitude,
+               s.latitude,
+               s.address,
+               s.leader_id,
+               s.department_id,
+               s.del_flag,
+               s.mini_picture as thumbnail,
+               s.introduce,
+               sp.context,
+               su.nickname as leaderName,
+               sd.department_name
+        FROM site s
+                 LEFT JOIN site_page sp on s.site_id = sp.site_id
+                 LEFT JOIN sys_user su on s.leader_id = su.user_id
+                 LEFT JOIN sys_dept sd on s.department_id = sd.dept_id
+        WHERE s.del_flag = 0
+    </select>
+
+    <select id="getById" resultType="cn.swust.indigo.mce.entity.po.ContextSite">
+        SELECT s.site_id,
+               s.name,
+               s.site_py,
+               s.longitude,
+               s.latitude,
+               s.address,
+               s.leader_id,
+               s.department_id,
+               s.del_flag,
+               s.mini_picture as thumbnail,
+               s.introduce,
+               sp.context,
+               su.nickname as leaderName,
+               sd.department_name
+        FROM site s
+                 LEFT JOIN site_page sp on s.site_id = sp.site_id
+                 LEFT JOIN sys_user su on s.leader_id = su.user_id
+                 LEFT JOIN sys_dept sd on s.department_id = sd.dept_id
+        WHERE s.site_id = #{siteId}
+    </select>
+</mapper>

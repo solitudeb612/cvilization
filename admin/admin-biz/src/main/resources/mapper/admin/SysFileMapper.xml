@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.admin.mapper.SysFileMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="baseResultMap" type="cn.swust.indigo.admin.entity.po.SysFile">
+        <result column="file_name" property="fileName"/>
+        <result column="original" property="original"/>
+        <result column="bucket_name" property="bucketName"/>
+        <result column="type" property="type"/>
+        <result column="file_size" property="fileSize"/>
+        <result column="create_user" property="createUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="getFilePages" resultMap="baseResultMap">
+        SELECT
+        id, file_name, original, bucket_name, type, file_size,
+        create_user, create_time, update_user, update_time,
+        del_flag, tenant_id
+        FROM
+        sys_file
+        <where>
+            <if test="query.createTime != null">
+                and create_time like '%#{query.createTime}%'
+            </if>
+            <if test="query.bucketName != null">
+                and bucket_name = #{query.bucketName}
+            </if>
+            <if test="query.createUser != null">
+                and create_user = #{query.createUser}
+            </if>
+            <if test="query.updateUser != null">
+                and update_user = #{query.updateUser}
+            </if>
+            <if test="query.delFlag != null">
+                and del_flag = #{query.delFlag}
+            </if>
+            <if test="query.fileName != null">
+                and file_name = #{query.fileName}
+            </if>
+            <if test="query.fileSize != null">
+                and file_size = #{query.fileSize}
+            </if>
+        </where>
+        ORDER BY create_time desc
+    </select>
+
+    <select id="getFileByName" resultMap="baseResultMap">
+		select * from sys_file where file_name = #{fileName} and bucket_name = #{bucketName}
+	</select>
+
+    <delete id="deleteByFileName">
+        delete from sys_file where file_name = #{fileName} and bucket_name = #{bucketName}
+    </delete>
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.TaskCommitMapper">
+
+  <resultMap id="taskCommitMap" type="cn.swust.indigo.mce.entity.po.TaskCommit">
+                  <id column="task_commit_id" property="taskCommitId" />
+                        <result column="task_id" property="taskId"/>
+                        <result column="commit_name" property="commitName"/>
+                        <result column="type" property="type"/>
+                        <result column="memo" property="memo"/>
+            </resultMap>
+</mapper>

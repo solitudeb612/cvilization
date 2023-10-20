@@ -1,0 +1,972 @@
+2023-10-14 15:27:45,761 [main] Starting CheckGroupCriteriaTest on DESKTOP-AGRJQJ0 with PID 14276 (started by complicated in E:\gitCoder\my-civ-eva\my-civ-eva)
+2023-10-14 15:27:45,763 [main] The following profiles are active: dev
+2023-10-14 15:27:49,579 [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-10-14 15:27:49,584 [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-14 15:27:49,659 [main] Finished Spring Data repository scanning in 47ms. Found 0 Redis repository interfaces.
+2023-10-14 15:27:52,088 [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@77d381e6' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 15:27:52,109 [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 15:27:52,130 [main] Bean 'redisCacheManagerConfig' of type [cn.swust.indigo.common.data.redis.RedisCacheManagerConfig$$EnhancerBySpringCGLIB$$586f99d8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 15:28:01,422 [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-10-14 15:28:01,756 [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6be8ce1b, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f908bc0, org.springframework.security.web.header.HeaderWriterFilter@5ad40184, org.springframework.security.web.authentication.logout.LogoutFilter@60bc308b, cn.swust.indigo.common.security.filter.TokenFilter@2d2fc130, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4ffa078d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26cdd4af, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c53bd49, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e3c36d, org.springframework.security.web.session.SessionManagementFilter@3d3b272a, org.springframework.security.web.access.ExceptionTranslationFilter@9cc0505, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@186f7434]
+2023-10-14 15:28:02,206 [main] Initializing ExecutorService 'applicationTaskExecutor'
+2023-10-14 15:28:02,765 [main] Initializing ExecutorService 'taskScheduler'
+2023-10-14 15:28:02,855 [main] Context refreshed
+2023-10-14 15:28:02,907 [main] Found 2 custom documentation plugin(s)
+2023-10-14 15:28:03,000 [main] Scanning for api listing references
+2023-10-14 15:28:03,255 [main] Generating unique operation named: getByIdUsingGET_1
+2023-10-14 15:28:03,290 [main] Generating unique operation named: removeByIdUsingDELETE_1
+2023-10-14 15:28:03,298 [main] Generating unique operation named: saveUsingPOST_1
+2023-10-14 15:28:03,308 [main] Generating unique operation named: getSysFileByIdUsingGET_1
+2023-10-14 15:28:03,325 [main] Generating unique operation named: removeByIdUsingDELETE_2
+2023-10-14 15:28:03,335 [main] Generating unique operation named: removeByIdUsingDELETE_3
+2023-10-14 15:28:03,344 [main] Generating unique operation named: saveUsingPOST_2
+2023-10-14 15:28:03,353 [main] Generating unique operation named: getByIdUsingGET_2
+2023-10-14 15:28:03,369 [main] Generating unique operation named: getTreeUsingGET_1
+2023-10-14 15:28:03,372 [main] Generating unique operation named: removeByIdUsingDELETE_4
+2023-10-14 15:28:03,377 [main] Generating unique operation named: saveUsingPOST_3
+2023-10-14 15:28:03,378 [main] Generating unique operation named: updateUsingPUT_1
+2023-10-14 15:28:03,384 [main] Generating unique operation named: getByIdUsingGET_3
+2023-10-14 15:28:03,398 [main] Generating unique operation named: removeByIdUsingDELETE_5
+2023-10-14 15:28:03,402 [main] Generating unique operation named: saveUsingPOST_4
+2023-10-14 15:28:03,407 [main] Generating unique operation named: updateByIdUsingPUT_1
+2023-10-14 15:28:03,409 [main] Generating unique operation named: getByIdUsingGET_4
+2023-10-14 15:28:03,422 [main] Generating unique operation named: removeByIdUsingDELETE_6
+2023-10-14 15:28:03,424 [main] Generating unique operation named: saveUsingPOST_5
+2023-10-14 15:28:03,425 [main] Generating unique operation named: updateByIdUsingPUT_2
+2023-10-14 15:28:03,428 [main] Generating unique operation named: getByIdUsingGET_5
+2023-10-14 15:28:03,429 [main] Generating unique operation named: getByParamIdUsingGET_1
+2023-10-14 15:28:03,441 [main] Generating unique operation named: removeByIdUsingDELETE_7
+2023-10-14 15:28:03,442 [main] Generating unique operation named: removeByParamIdUsingDELETE_1
+2023-10-14 15:28:03,447 [main] Generating unique operation named: saveUsingPOST_6
+2023-10-14 15:28:03,448 [main] Generating unique operation named: updateByIdUsingPUT_3
+2023-10-14 15:28:03,451 [main] Generating unique operation named: getByParamIdUsingGET_2
+2023-10-14 15:28:03,464 [main] Generating unique operation named: getRolePageUsingGET_1
+2023-10-14 15:28:03,467 [main] Generating unique operation named: removeByParamIdUsingDELETE_2
+2023-10-14 15:28:03,472 [main] Generating unique operation named: saveUsingPOST_7
+2023-10-14 15:28:03,478 [main] Generating unique operation named: updateUsingPUT_2
+2023-10-14 15:28:03,498 [main] Generating unique operation named: listUsingGET_1
+2023-10-14 15:28:03,511 [main] Generating unique operation named: userUsingGET_1
+2023-10-14 15:28:03,518 [main] Generating unique operation named: infoUsingGET_1
+2023-10-14 15:28:03,539 [main] Scanning for api listing references
+2023-10-14 15:28:03,547 [main] Generating unique operation named: getByIdUsingGET_6
+2023-10-14 15:28:03,552 [main] Generating unique operation named: removeByIdUsingDELETE_8
+2023-10-14 15:28:03,556 [main] Generating unique operation named: saveUsingPOST_8
+2023-10-14 15:28:03,557 [main] Generating unique operation named: updateByIdUsingPUT_4
+2023-10-14 15:28:03,560 [main] Generating unique operation named: addUsingPOST_1
+2023-10-14 15:28:03,563 [main] Generating unique operation named: getByIdUsingGET_7
+2023-10-14 15:28:03,569 [main] Generating unique operation named: getByIdUsingGET_8
+2023-10-14 15:28:03,577 [main] Generating unique operation named: removeByIdUsingDELETE_9
+2023-10-14 15:28:03,580 [main] Generating unique operation named: saveUsingPOST_9
+2023-10-14 15:28:03,581 [main] Generating unique operation named: updateByIdUsingPUT_5
+2023-10-14 15:28:03,583 [main] Generating unique operation named: getByIdUsingGET_9
+2023-10-14 15:28:03,593 [main] Generating unique operation named: removeByIdUsingDELETE_10
+2023-10-14 15:28:03,598 [main] Generating unique operation named: saveUsingPOST_10
+2023-10-14 15:28:03,599 [main] Generating unique operation named: updateByIdUsingPUT_6
+2023-10-14 15:28:03,612 [main] Generating unique operation named: commitReportUsingPUT_1
+2023-10-14 15:28:03,613 [main] Generating unique operation named: getByIdUsingGET_10
+2023-10-14 15:28:03,616 [main] Generating unique operation named: getCheckReportPageUsingGET_1
+2023-10-14 15:28:03,618 [main] Generating unique operation named: removeByIdUsingDELETE_11
+2023-10-14 15:28:03,619 [main] Generating unique operation named: saveUsingPOST_11
+2023-10-14 15:28:03,620 [main] Generating unique operation named: updateByIdUsingPUT_7
+2023-10-14 15:28:03,634 [main] Generating unique operation named: getCommitReportUsingGET_1
+2023-10-14 15:28:03,642 [main] Generating unique operation named: removeByIdUsingDELETE_12
+2023-10-14 15:28:03,650 [main] Generating unique operation named: updateByIdUsingPUT_8
+2023-10-14 15:28:03,651 [main] Generating unique operation named: updateByIdUsingPUT_9
+2023-10-14 15:28:03,691 [main] Generating unique operation named: removeByIdUsingDELETE_13
+2023-10-14 15:28:03,697 [main] Generating unique operation named: saveUsingPOST_12
+2023-10-14 15:28:03,704 [main] Generating unique operation named: updateByIdUsingPUT_10
+2023-10-14 15:28:03,710 [main] Generating unique operation named: getByIdUsingGET_11
+2023-10-14 15:28:03,718 [main] Generating unique operation named: removeByIdUsingDELETE_14
+2023-10-14 15:28:03,724 [main] Generating unique operation named: saveUsingPOST_13
+2023-10-14 15:28:03,726 [main] Generating unique operation named: updateByIdUsingPUT_11
+2023-10-14 15:28:03,731 [main] Generating unique operation named: getByIdUsingGET_12
+2023-10-14 15:28:03,734 [main] Generating unique operation named: removeByIdUsingDELETE_15
+2023-10-14 15:28:03,739 [main] Generating unique operation named: updateByIdUsingPUT_12
+2023-10-14 15:28:03,740 [main] Generating unique operation named: listUsingGET_2
+2023-10-14 15:28:03,742 [main] Generating unique operation named: saveUsingPUT_1
+2023-10-14 15:28:03,744 [main] Generating unique operation named: getByIdUsingGET_13
+2023-10-14 15:28:03,756 [main] Generating unique operation named: removeByIdUsingDELETE_16
+2023-10-14 15:28:03,760 [main] Generating unique operation named: saveUsingPOST_14
+2023-10-14 15:28:03,763 [main] Generating unique operation named: updateByIdUsingPUT_13
+2023-10-14 15:28:03,765 [main] Generating unique operation named: getByIdUsingGET_14
+2023-10-14 15:28:03,770 [main] Generating unique operation named: removeByIdUsingDELETE_17
+2023-10-14 15:28:03,773 [main] Generating unique operation named: saveUsingPOST_15
+2023-10-14 15:28:03,774 [main] Generating unique operation named: updateByIdUsingPUT_14
+2023-10-14 15:28:03,775 [main] Generating unique operation named: getByIdUsingGET_15
+2023-10-14 15:28:03,776 [main] Generating unique operation named: getSitePageUsingGET_1
+2023-10-14 15:28:03,779 [main] Generating unique operation named: saveUsingPOST_16
+2023-10-14 15:28:03,780 [main] Generating unique operation named: getByIdUsingGET_16
+2023-10-14 15:28:03,787 [main] Generating unique operation named: removeByIdUsingDELETE_18
+2023-10-14 15:28:03,790 [main] Generating unique operation named: saveUsingPOST_17
+2023-10-14 15:28:03,793 [main] Generating unique operation named: updateByIdUsingPUT_15
+2023-10-14 15:28:03,822 [main] Started CheckGroupCriteriaTest in 18.722 seconds (JVM running for 21.457)
+2023-10-14 15:28:04,307 [main] HikariPool-1 - Starting...
+2023-10-14 15:28:05,996 [main] HikariPool-1 - Start completed.
+2023-10-14 15:28:06,202 [SpringContextShutdownHook] Shutting down ExecutorService 'taskScheduler'
+2023-10-14 15:28:06,203 [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2023-10-14 15:28:06,254 [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-10-14 15:28:07,219 [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2023-10-14 15:44:12,682 [main] Starting RuleDeptTaskServiceTest on DESKTOP-AGRJQJ0 with PID 944 (started by complicated in E:\gitCoder\my-civ-eva\my-civ-eva)
+2023-10-14 15:44:12,684 [main] The following profiles are active: dev
+2023-10-14 15:44:13,909 [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-10-14 15:44:13,912 [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-14 15:44:13,967 [main] Finished Spring Data repository scanning in 36ms. Found 0 Redis repository interfaces.
+2023-10-14 15:44:14,978 [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@38291795' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 15:44:14,993 [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 15:44:15,011 [main] Bean 'redisCacheManagerConfig' of type [cn.swust.indigo.common.data.redis.RedisCacheManagerConfig$$EnhancerBySpringCGLIB$$ad1ac93a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 15:44:20,832 [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-10-14 15:44:21,062 [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2adc1e84, org.springframework.security.web.context.SecurityContextPersistenceFilter@67e4928c, org.springframework.security.web.header.HeaderWriterFilter@6acb45c1, org.springframework.security.web.authentication.logout.LogoutFilter@1b69fc07, cn.swust.indigo.common.security.filter.TokenFilter@21b744ec, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@459e120b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72e75786, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3b2c8bda, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2a99fa07, org.springframework.security.web.session.SessionManagementFilter@30bbe83, org.springframework.security.web.access.ExceptionTranslationFilter@7c47e077, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4ff074a0]
+2023-10-14 15:44:21,381 [main] Initializing ExecutorService 'applicationTaskExecutor'
+2023-10-14 15:44:21,829 [main] Initializing ExecutorService 'taskScheduler'
+2023-10-14 15:44:21,900 [main] Context refreshed
+2023-10-14 15:44:21,926 [main] Found 2 custom documentation plugin(s)
+2023-10-14 15:44:21,984 [main] Scanning for api listing references
+2023-10-14 15:44:22,157 [main] Generating unique operation named: getByIdUsingGET_1
+2023-10-14 15:44:22,187 [main] Generating unique operation named: removeByIdUsingDELETE_1
+2023-10-14 15:44:22,192 [main] Generating unique operation named: saveUsingPOST_1
+2023-10-14 15:44:22,199 [main] Generating unique operation named: getSysFileByIdUsingGET_1
+2023-10-14 15:44:22,212 [main] Generating unique operation named: removeByIdUsingDELETE_2
+2023-10-14 15:44:22,220 [main] Generating unique operation named: removeByIdUsingDELETE_3
+2023-10-14 15:44:22,225 [main] Generating unique operation named: saveUsingPOST_2
+2023-10-14 15:44:22,234 [main] Generating unique operation named: getByIdUsingGET_2
+2023-10-14 15:44:22,248 [main] Generating unique operation named: getTreeUsingGET_1
+2023-10-14 15:44:22,250 [main] Generating unique operation named: removeByIdUsingDELETE_4
+2023-10-14 15:44:22,254 [main] Generating unique operation named: saveUsingPOST_3
+2023-10-14 15:44:22,256 [main] Generating unique operation named: updateUsingPUT_1
+2023-10-14 15:44:22,260 [main] Generating unique operation named: getByIdUsingGET_3
+2023-10-14 15:44:22,271 [main] Generating unique operation named: removeByIdUsingDELETE_5
+2023-10-14 15:44:22,275 [main] Generating unique operation named: saveUsingPOST_4
+2023-10-14 15:44:22,278 [main] Generating unique operation named: updateByIdUsingPUT_1
+2023-10-14 15:44:22,281 [main] Generating unique operation named: getByIdUsingGET_4
+2023-10-14 15:44:22,292 [main] Generating unique operation named: removeByIdUsingDELETE_6
+2023-10-14 15:44:22,293 [main] Generating unique operation named: saveUsingPOST_5
+2023-10-14 15:44:22,294 [main] Generating unique operation named: updateByIdUsingPUT_2
+2023-10-14 15:44:22,296 [main] Generating unique operation named: getByIdUsingGET_5
+2023-10-14 15:44:22,298 [main] Generating unique operation named: getByParamIdUsingGET_1
+2023-10-14 15:44:22,307 [main] Generating unique operation named: removeByIdUsingDELETE_7
+2023-10-14 15:44:22,308 [main] Generating unique operation named: removeByParamIdUsingDELETE_1
+2023-10-14 15:44:22,311 [main] Generating unique operation named: saveUsingPOST_6
+2023-10-14 15:44:22,312 [main] Generating unique operation named: updateByIdUsingPUT_3
+2023-10-14 15:44:22,315 [main] Generating unique operation named: getByParamIdUsingGET_2
+2023-10-14 15:44:22,321 [main] Generating unique operation named: getRolePageUsingGET_1
+2023-10-14 15:44:22,323 [main] Generating unique operation named: removeByParamIdUsingDELETE_2
+2023-10-14 15:44:22,326 [main] Generating unique operation named: saveUsingPOST_7
+2023-10-14 15:44:22,330 [main] Generating unique operation named: updateUsingPUT_2
+2023-10-14 15:44:22,345 [main] Generating unique operation named: listUsingGET_1
+2023-10-14 15:44:22,355 [main] Generating unique operation named: userUsingGET_1
+2023-10-14 15:44:22,360 [main] Generating unique operation named: infoUsingGET_1
+2023-10-14 15:44:22,381 [main] Scanning for api listing references
+2023-10-14 15:44:22,387 [main] Generating unique operation named: getByIdUsingGET_6
+2023-10-14 15:44:22,394 [main] Generating unique operation named: removeByIdUsingDELETE_8
+2023-10-14 15:44:22,398 [main] Generating unique operation named: saveUsingPOST_8
+2023-10-14 15:44:22,400 [main] Generating unique operation named: updateByIdUsingPUT_4
+2023-10-14 15:44:22,403 [main] Generating unique operation named: addUsingPOST_1
+2023-10-14 15:44:22,405 [main] Generating unique operation named: getByIdUsingGET_7
+2023-10-14 15:44:22,410 [main] Generating unique operation named: getByIdUsingGET_8
+2023-10-14 15:44:22,419 [main] Generating unique operation named: removeByIdUsingDELETE_9
+2023-10-14 15:44:22,422 [main] Generating unique operation named: saveUsingPOST_9
+2023-10-14 15:44:22,423 [main] Generating unique operation named: updateByIdUsingPUT_5
+2023-10-14 15:44:22,426 [main] Generating unique operation named: getByIdUsingGET_9
+2023-10-14 15:44:22,438 [main] Generating unique operation named: removeByIdUsingDELETE_10
+2023-10-14 15:44:22,445 [main] Generating unique operation named: saveUsingPOST_10
+2023-10-14 15:44:22,447 [main] Generating unique operation named: updateByIdUsingPUT_6
+2023-10-14 15:44:22,458 [main] Generating unique operation named: commitReportUsingPUT_1
+2023-10-14 15:44:22,460 [main] Generating unique operation named: getByIdUsingGET_10
+2023-10-14 15:44:22,464 [main] Generating unique operation named: getCheckReportPageUsingGET_1
+2023-10-14 15:44:22,465 [main] Generating unique operation named: removeByIdUsingDELETE_11
+2023-10-14 15:44:22,467 [main] Generating unique operation named: saveUsingPOST_11
+2023-10-14 15:44:22,468 [main] Generating unique operation named: updateByIdUsingPUT_7
+2023-10-14 15:44:22,479 [main] Generating unique operation named: getCommitReportUsingGET_1
+2023-10-14 15:44:22,486 [main] Generating unique operation named: removeByIdUsingDELETE_12
+2023-10-14 15:44:22,492 [main] Generating unique operation named: updateByIdUsingPUT_8
+2023-10-14 15:44:22,493 [main] Generating unique operation named: updateByIdUsingPUT_9
+2023-10-14 15:44:22,524 [main] Generating unique operation named: removeByIdUsingDELETE_13
+2023-10-14 15:44:22,528 [main] Generating unique operation named: saveUsingPOST_12
+2023-10-14 15:44:22,533 [main] Generating unique operation named: updateByIdUsingPUT_10
+2023-10-14 15:44:22,538 [main] Generating unique operation named: getByIdUsingGET_11
+2023-10-14 15:44:22,545 [main] Generating unique operation named: removeByIdUsingDELETE_14
+2023-10-14 15:44:22,548 [main] Generating unique operation named: saveUsingPOST_13
+2023-10-14 15:44:22,549 [main] Generating unique operation named: updateByIdUsingPUT_11
+2023-10-14 15:44:22,553 [main] Generating unique operation named: getByIdUsingGET_12
+2023-10-14 15:44:22,555 [main] Generating unique operation named: removeByIdUsingDELETE_15
+2023-10-14 15:44:22,559 [main] Generating unique operation named: updateByIdUsingPUT_12
+2023-10-14 15:44:22,560 [main] Generating unique operation named: listUsingGET_2
+2023-10-14 15:44:22,562 [main] Generating unique operation named: saveUsingPUT_1
+2023-10-14 15:44:22,564 [main] Generating unique operation named: getByIdUsingGET_13
+2023-10-14 15:44:22,574 [main] Generating unique operation named: removeByIdUsingDELETE_16
+2023-10-14 15:44:22,577 [main] Generating unique operation named: saveUsingPOST_14
+2023-10-14 15:44:22,580 [main] Generating unique operation named: updateByIdUsingPUT_13
+2023-10-14 15:44:22,583 [main] Generating unique operation named: getByIdUsingGET_14
+2023-10-14 15:44:22,587 [main] Generating unique operation named: removeByIdUsingDELETE_17
+2023-10-14 15:44:22,590 [main] Generating unique operation named: saveUsingPOST_15
+2023-10-14 15:44:22,592 [main] Generating unique operation named: updateByIdUsingPUT_14
+2023-10-14 15:44:22,593 [main] Generating unique operation named: getByIdUsingGET_15
+2023-10-14 15:44:22,595 [main] Generating unique operation named: getSitePageUsingGET_1
+2023-10-14 15:44:22,598 [main] Generating unique operation named: saveUsingPOST_16
+2023-10-14 15:44:22,600 [main] Generating unique operation named: getByIdUsingGET_16
+2023-10-14 15:44:22,609 [main] Generating unique operation named: removeByIdUsingDELETE_18
+2023-10-14 15:44:22,613 [main] Generating unique operation named: saveUsingPOST_17
+2023-10-14 15:44:22,616 [main] Generating unique operation named: updateByIdUsingPUT_15
+2023-10-14 15:44:22,644 [main] Started RuleDeptTaskServiceTest in 10.323 seconds (JVM running for 11.521)
+2023-10-14 15:44:22,835 [main] HikariPool-1 - Starting...
+2023-10-14 15:44:24,231 [main] HikariPool-1 - Start completed.
+2023-10-14 15:44:24,493 [SpringContextShutdownHook] Shutting down ExecutorService 'taskScheduler'
+2023-10-14 15:44:24,494 [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2023-10-14 15:44:24,518 [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-10-14 15:44:25,454 [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2023-10-14 15:44:47,988 [main] Starting CheckGroupCriteriaTest on DESKTOP-AGRJQJ0 with PID 2684 (started by complicated in E:\gitCoder\my-civ-eva\my-civ-eva)
+2023-10-14 15:44:47,990 [main] The following profiles are active: dev
+2023-10-14 15:44:49,276 [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-10-14 15:44:49,280 [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-14 15:44:49,328 [main] Finished Spring Data repository scanning in 30ms. Found 0 Redis repository interfaces.
+2023-10-14 15:44:50,399 [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@77d381e6' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 15:44:50,415 [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 15:44:50,433 [main] Bean 'redisCacheManagerConfig' of type [cn.swust.indigo.common.data.redis.RedisCacheManagerConfig$$EnhancerBySpringCGLIB$$586f99d8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 15:44:56,271 [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-10-14 15:44:56,502 [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6be8ce1b, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f908bc0, org.springframework.security.web.header.HeaderWriterFilter@5ad40184, org.springframework.security.web.authentication.logout.LogoutFilter@60bc308b, cn.swust.indigo.common.security.filter.TokenFilter@2d2fc130, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4ffa078d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26cdd4af, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c53bd49, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e3c36d, org.springframework.security.web.session.SessionManagementFilter@3d3b272a, org.springframework.security.web.access.ExceptionTranslationFilter@9cc0505, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@186f7434]
+2023-10-14 15:44:56,859 [main] Initializing ExecutorService 'applicationTaskExecutor'
+2023-10-14 15:44:57,272 [main] Initializing ExecutorService 'taskScheduler'
+2023-10-14 15:44:57,352 [main] Context refreshed
+2023-10-14 15:44:57,381 [main] Found 2 custom documentation plugin(s)
+2023-10-14 15:44:57,446 [main] Scanning for api listing references
+2023-10-14 15:44:57,634 [main] Generating unique operation named: getByIdUsingGET_1
+2023-10-14 15:44:57,662 [main] Generating unique operation named: removeByIdUsingDELETE_1
+2023-10-14 15:44:57,668 [main] Generating unique operation named: saveUsingPOST_1
+2023-10-14 15:44:57,676 [main] Generating unique operation named: getSysFileByIdUsingGET_1
+2023-10-14 15:44:57,690 [main] Generating unique operation named: removeByIdUsingDELETE_2
+2023-10-14 15:44:57,699 [main] Generating unique operation named: removeByIdUsingDELETE_3
+2023-10-14 15:44:57,705 [main] Generating unique operation named: saveUsingPOST_2
+2023-10-14 15:44:57,711 [main] Generating unique operation named: getByIdUsingGET_2
+2023-10-14 15:44:57,724 [main] Generating unique operation named: getTreeUsingGET_1
+2023-10-14 15:44:57,726 [main] Generating unique operation named: removeByIdUsingDELETE_4
+2023-10-14 15:44:57,730 [main] Generating unique operation named: saveUsingPOST_3
+2023-10-14 15:44:57,731 [main] Generating unique operation named: updateUsingPUT_1
+2023-10-14 15:44:57,737 [main] Generating unique operation named: getByIdUsingGET_3
+2023-10-14 15:44:57,747 [main] Generating unique operation named: removeByIdUsingDELETE_5
+2023-10-14 15:44:57,751 [main] Generating unique operation named: saveUsingPOST_4
+2023-10-14 15:44:57,755 [main] Generating unique operation named: updateByIdUsingPUT_1
+2023-10-14 15:44:57,757 [main] Generating unique operation named: getByIdUsingGET_4
+2023-10-14 15:44:57,767 [main] Generating unique operation named: removeByIdUsingDELETE_6
+2023-10-14 15:44:57,769 [main] Generating unique operation named: saveUsingPOST_5
+2023-10-14 15:44:57,770 [main] Generating unique operation named: updateByIdUsingPUT_2
+2023-10-14 15:44:57,774 [main] Generating unique operation named: getByIdUsingGET_5
+2023-10-14 15:44:57,776 [main] Generating unique operation named: getByParamIdUsingGET_1
+2023-10-14 15:44:57,793 [main] Generating unique operation named: removeByIdUsingDELETE_7
+2023-10-14 15:44:57,796 [main] Generating unique operation named: removeByParamIdUsingDELETE_1
+2023-10-14 15:44:57,801 [main] Generating unique operation named: saveUsingPOST_6
+2023-10-14 15:44:57,803 [main] Generating unique operation named: updateByIdUsingPUT_3
+2023-10-14 15:44:57,805 [main] Generating unique operation named: getByParamIdUsingGET_2
+2023-10-14 15:44:57,812 [main] Generating unique operation named: getRolePageUsingGET_1
+2023-10-14 15:44:57,814 [main] Generating unique operation named: removeByParamIdUsingDELETE_2
+2023-10-14 15:44:57,817 [main] Generating unique operation named: saveUsingPOST_7
+2023-10-14 15:44:57,823 [main] Generating unique operation named: updateUsingPUT_2
+2023-10-14 15:44:57,840 [main] Generating unique operation named: listUsingGET_1
+2023-10-14 15:44:57,859 [main] Generating unique operation named: userUsingGET_1
+2023-10-14 15:44:57,867 [main] Generating unique operation named: infoUsingGET_1
+2023-10-14 15:44:57,887 [main] Scanning for api listing references
+2023-10-14 15:44:57,893 [main] Generating unique operation named: getByIdUsingGET_6
+2023-10-14 15:44:57,900 [main] Generating unique operation named: removeByIdUsingDELETE_8
+2023-10-14 15:44:57,903 [main] Generating unique operation named: saveUsingPOST_8
+2023-10-14 15:44:57,904 [main] Generating unique operation named: updateByIdUsingPUT_4
+2023-10-14 15:44:57,908 [main] Generating unique operation named: addUsingPOST_1
+2023-10-14 15:44:57,912 [main] Generating unique operation named: getByIdUsingGET_7
+2023-10-14 15:44:57,919 [main] Generating unique operation named: getByIdUsingGET_8
+2023-10-14 15:44:57,926 [main] Generating unique operation named: removeByIdUsingDELETE_9
+2023-10-14 15:44:57,930 [main] Generating unique operation named: saveUsingPOST_9
+2023-10-14 15:44:57,932 [main] Generating unique operation named: updateByIdUsingPUT_5
+2023-10-14 15:44:57,936 [main] Generating unique operation named: getByIdUsingGET_9
+2023-10-14 15:44:57,948 [main] Generating unique operation named: removeByIdUsingDELETE_10
+2023-10-14 15:44:57,953 [main] Generating unique operation named: saveUsingPOST_10
+2023-10-14 15:44:57,954 [main] Generating unique operation named: updateByIdUsingPUT_6
+2023-10-14 15:44:57,966 [main] Generating unique operation named: commitReportUsingPUT_1
+2023-10-14 15:44:57,967 [main] Generating unique operation named: getByIdUsingGET_10
+2023-10-14 15:44:57,970 [main] Generating unique operation named: getCheckReportPageUsingGET_1
+2023-10-14 15:44:57,971 [main] Generating unique operation named: removeByIdUsingDELETE_11
+2023-10-14 15:44:57,972 [main] Generating unique operation named: saveUsingPOST_11
+2023-10-14 15:44:57,973 [main] Generating unique operation named: updateByIdUsingPUT_7
+2023-10-14 15:44:57,985 [main] Generating unique operation named: getCommitReportUsingGET_1
+2023-10-14 15:44:57,993 [main] Generating unique operation named: removeByIdUsingDELETE_12
+2023-10-14 15:44:58,000 [main] Generating unique operation named: updateByIdUsingPUT_8
+2023-10-14 15:44:58,001 [main] Generating unique operation named: updateByIdUsingPUT_9
+2023-10-14 15:44:58,033 [main] Generating unique operation named: removeByIdUsingDELETE_13
+2023-10-14 15:44:58,036 [main] Generating unique operation named: saveUsingPOST_12
+2023-10-14 15:44:58,040 [main] Generating unique operation named: updateByIdUsingPUT_10
+2023-10-14 15:44:58,047 [main] Generating unique operation named: getByIdUsingGET_11
+2023-10-14 15:44:58,055 [main] Generating unique operation named: removeByIdUsingDELETE_14
+2023-10-14 15:44:58,058 [main] Generating unique operation named: saveUsingPOST_13
+2023-10-14 15:44:58,061 [main] Generating unique operation named: updateByIdUsingPUT_11
+2023-10-14 15:44:58,067 [main] Generating unique operation named: getByIdUsingGET_12
+2023-10-14 15:44:58,071 [main] Generating unique operation named: removeByIdUsingDELETE_15
+2023-10-14 15:44:58,075 [main] Generating unique operation named: updateByIdUsingPUT_12
+2023-10-14 15:44:58,077 [main] Generating unique operation named: listUsingGET_2
+2023-10-14 15:44:58,079 [main] Generating unique operation named: saveUsingPUT_1
+2023-10-14 15:44:58,081 [main] Generating unique operation named: getByIdUsingGET_13
+2023-10-14 15:44:58,094 [main] Generating unique operation named: removeByIdUsingDELETE_16
+2023-10-14 15:44:58,098 [main] Generating unique operation named: saveUsingPOST_14
+2023-10-14 15:44:58,100 [main] Generating unique operation named: updateByIdUsingPUT_13
+2023-10-14 15:44:58,102 [main] Generating unique operation named: getByIdUsingGET_14
+2023-10-14 15:44:58,107 [main] Generating unique operation named: removeByIdUsingDELETE_17
+2023-10-14 15:44:58,112 [main] Generating unique operation named: saveUsingPOST_15
+2023-10-14 15:44:58,115 [main] Generating unique operation named: updateByIdUsingPUT_14
+2023-10-14 15:44:58,117 [main] Generating unique operation named: getByIdUsingGET_15
+2023-10-14 15:44:58,118 [main] Generating unique operation named: getSitePageUsingGET_1
+2023-10-14 15:44:58,121 [main] Generating unique operation named: saveUsingPOST_16
+2023-10-14 15:44:58,123 [main] Generating unique operation named: getByIdUsingGET_16
+2023-10-14 15:44:58,132 [main] Generating unique operation named: removeByIdUsingDELETE_18
+2023-10-14 15:44:58,134 [main] Generating unique operation named: saveUsingPOST_17
+2023-10-14 15:44:58,137 [main] Generating unique operation named: updateByIdUsingPUT_15
+2023-10-14 15:44:58,162 [main] Started CheckGroupCriteriaTest in 10.561 seconds (JVM running for 11.784)
+2023-10-14 15:44:58,345 [main] HikariPool-1 - Starting...
+2023-10-14 15:44:59,965 [main] HikariPool-1 - Start completed.
+2023-10-14 15:45:00,137 [SpringContextShutdownHook] Shutting down ExecutorService 'taskScheduler'
+2023-10-14 15:45:00,138 [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2023-10-14 15:45:00,179 [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-10-14 15:45:01,293 [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2023-10-14 15:51:09,201 [main] Starting CheckGroupCriteriaTest on DESKTOP-AGRJQJ0 with PID 15908 (started by complicated in E:\gitCoder\my-civ-eva\my-civ-eva)
+2023-10-14 15:51:09,203 [main] The following profiles are active: dev
+2023-10-14 15:51:10,355 [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-10-14 15:51:10,358 [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-14 15:51:10,404 [main] Finished Spring Data repository scanning in 30ms. Found 0 Redis repository interfaces.
+2023-10-14 15:51:11,419 [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@77d381e6' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 15:51:11,435 [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 15:51:11,453 [main] Bean 'redisCacheManagerConfig' of type [cn.swust.indigo.common.data.redis.RedisCacheManagerConfig$$EnhancerBySpringCGLIB$$586f99d8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 15:51:17,188 [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-10-14 15:51:17,422 [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6be8ce1b, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f908bc0, org.springframework.security.web.header.HeaderWriterFilter@5ad40184, org.springframework.security.web.authentication.logout.LogoutFilter@60bc308b, cn.swust.indigo.common.security.filter.TokenFilter@2d2fc130, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4ffa078d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26cdd4af, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c53bd49, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e3c36d, org.springframework.security.web.session.SessionManagementFilter@3d3b272a, org.springframework.security.web.access.ExceptionTranslationFilter@9cc0505, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@186f7434]
+2023-10-14 15:51:17,761 [main] Initializing ExecutorService 'applicationTaskExecutor'
+2023-10-14 15:51:18,158 [main] Initializing ExecutorService 'taskScheduler'
+2023-10-14 15:51:18,234 [main] Context refreshed
+2023-10-14 15:51:18,264 [main] Found 2 custom documentation plugin(s)
+2023-10-14 15:51:18,324 [main] Scanning for api listing references
+2023-10-14 15:51:18,505 [main] Generating unique operation named: getByIdUsingGET_1
+2023-10-14 15:51:18,538 [main] Generating unique operation named: removeByIdUsingDELETE_1
+2023-10-14 15:51:18,544 [main] Generating unique operation named: saveUsingPOST_1
+2023-10-14 15:51:18,552 [main] Generating unique operation named: getSysFileByIdUsingGET_1
+2023-10-14 15:51:18,565 [main] Generating unique operation named: removeByIdUsingDELETE_2
+2023-10-14 15:51:18,574 [main] Generating unique operation named: removeByIdUsingDELETE_3
+2023-10-14 15:51:18,579 [main] Generating unique operation named: saveUsingPOST_2
+2023-10-14 15:51:18,585 [main] Generating unique operation named: getByIdUsingGET_2
+2023-10-14 15:51:18,597 [main] Generating unique operation named: getTreeUsingGET_1
+2023-10-14 15:51:18,599 [main] Generating unique operation named: removeByIdUsingDELETE_4
+2023-10-14 15:51:18,603 [main] Generating unique operation named: saveUsingPOST_3
+2023-10-14 15:51:18,604 [main] Generating unique operation named: updateUsingPUT_1
+2023-10-14 15:51:18,609 [main] Generating unique operation named: getByIdUsingGET_3
+2023-10-14 15:51:18,619 [main] Generating unique operation named: removeByIdUsingDELETE_5
+2023-10-14 15:51:18,623 [main] Generating unique operation named: saveUsingPOST_4
+2023-10-14 15:51:18,627 [main] Generating unique operation named: updateByIdUsingPUT_1
+2023-10-14 15:51:18,629 [main] Generating unique operation named: getByIdUsingGET_4
+2023-10-14 15:51:18,640 [main] Generating unique operation named: removeByIdUsingDELETE_6
+2023-10-14 15:51:18,641 [main] Generating unique operation named: saveUsingPOST_5
+2023-10-14 15:51:18,643 [main] Generating unique operation named: updateByIdUsingPUT_2
+2023-10-14 15:51:18,645 [main] Generating unique operation named: getByIdUsingGET_5
+2023-10-14 15:51:18,646 [main] Generating unique operation named: getByParamIdUsingGET_1
+2023-10-14 15:51:18,656 [main] Generating unique operation named: removeByIdUsingDELETE_7
+2023-10-14 15:51:18,658 [main] Generating unique operation named: removeByParamIdUsingDELETE_1
+2023-10-14 15:51:18,662 [main] Generating unique operation named: saveUsingPOST_6
+2023-10-14 15:51:18,663 [main] Generating unique operation named: updateByIdUsingPUT_3
+2023-10-14 15:51:18,665 [main] Generating unique operation named: getByParamIdUsingGET_2
+2023-10-14 15:51:18,673 [main] Generating unique operation named: getRolePageUsingGET_1
+2023-10-14 15:51:18,676 [main] Generating unique operation named: removeByParamIdUsingDELETE_2
+2023-10-14 15:51:18,679 [main] Generating unique operation named: saveUsingPOST_7
+2023-10-14 15:51:18,683 [main] Generating unique operation named: updateUsingPUT_2
+2023-10-14 15:51:18,700 [main] Generating unique operation named: listUsingGET_1
+2023-10-14 15:51:18,712 [main] Generating unique operation named: userUsingGET_1
+2023-10-14 15:51:18,718 [main] Generating unique operation named: infoUsingGET_1
+2023-10-14 15:51:18,741 [main] Scanning for api listing references
+2023-10-14 15:51:18,748 [main] Generating unique operation named: getByIdUsingGET_6
+2023-10-14 15:51:18,753 [main] Generating unique operation named: removeByIdUsingDELETE_8
+2023-10-14 15:51:18,756 [main] Generating unique operation named: saveUsingPOST_8
+2023-10-14 15:51:18,757 [main] Generating unique operation named: updateByIdUsingPUT_4
+2023-10-14 15:51:18,762 [main] Generating unique operation named: addUsingPOST_1
+2023-10-14 15:51:18,765 [main] Generating unique operation named: getByIdUsingGET_7
+2023-10-14 15:51:18,771 [main] Generating unique operation named: getByIdUsingGET_8
+2023-10-14 15:51:18,779 [main] Generating unique operation named: removeByIdUsingDELETE_9
+2023-10-14 15:51:18,782 [main] Generating unique operation named: saveUsingPOST_9
+2023-10-14 15:51:18,783 [main] Generating unique operation named: updateByIdUsingPUT_5
+2023-10-14 15:51:18,787 [main] Generating unique operation named: getByIdUsingGET_9
+2023-10-14 15:51:18,797 [main] Generating unique operation named: removeByIdUsingDELETE_10
+2023-10-14 15:51:18,802 [main] Generating unique operation named: saveUsingPOST_10
+2023-10-14 15:51:18,804 [main] Generating unique operation named: updateByIdUsingPUT_6
+2023-10-14 15:51:18,817 [main] Generating unique operation named: commitReportUsingPUT_1
+2023-10-14 15:51:18,819 [main] Generating unique operation named: getByIdUsingGET_10
+2023-10-14 15:51:18,822 [main] Generating unique operation named: getCheckReportPageUsingGET_1
+2023-10-14 15:51:18,823 [main] Generating unique operation named: removeByIdUsingDELETE_11
+2023-10-14 15:51:18,824 [main] Generating unique operation named: saveUsingPOST_11
+2023-10-14 15:51:18,825 [main] Generating unique operation named: updateByIdUsingPUT_7
+2023-10-14 15:51:18,841 [main] Generating unique operation named: getCommitReportUsingGET_1
+2023-10-14 15:51:18,851 [main] Generating unique operation named: removeByIdUsingDELETE_12
+2023-10-14 15:51:18,857 [main] Generating unique operation named: updateByIdUsingPUT_8
+2023-10-14 15:51:18,858 [main] Generating unique operation named: updateByIdUsingPUT_9
+2023-10-14 15:51:18,892 [main] Generating unique operation named: removeByIdUsingDELETE_13
+2023-10-14 15:51:18,896 [main] Generating unique operation named: saveUsingPOST_12
+2023-10-14 15:51:18,901 [main] Generating unique operation named: updateByIdUsingPUT_10
+2023-10-14 15:51:18,908 [main] Generating unique operation named: getByIdUsingGET_11
+2023-10-14 15:51:18,919 [main] Generating unique operation named: removeByIdUsingDELETE_14
+2023-10-14 15:51:18,924 [main] Generating unique operation named: saveUsingPOST_13
+2023-10-14 15:51:18,926 [main] Generating unique operation named: updateByIdUsingPUT_11
+2023-10-14 15:51:18,931 [main] Generating unique operation named: getByIdUsingGET_12
+2023-10-14 15:51:18,935 [main] Generating unique operation named: removeByIdUsingDELETE_15
+2023-10-14 15:51:18,939 [main] Generating unique operation named: updateByIdUsingPUT_12
+2023-10-14 15:51:18,942 [main] Generating unique operation named: listUsingGET_2
+2023-10-14 15:51:18,945 [main] Generating unique operation named: saveUsingPUT_1
+2023-10-14 15:51:18,947 [main] Generating unique operation named: getByIdUsingGET_13
+2023-10-14 15:51:18,958 [main] Generating unique operation named: removeByIdUsingDELETE_16
+2023-10-14 15:51:18,961 [main] Generating unique operation named: saveUsingPOST_14
+2023-10-14 15:51:18,963 [main] Generating unique operation named: updateByIdUsingPUT_13
+2023-10-14 15:51:18,966 [main] Generating unique operation named: getByIdUsingGET_14
+2023-10-14 15:51:18,970 [main] Generating unique operation named: removeByIdUsingDELETE_17
+2023-10-14 15:51:18,973 [main] Generating unique operation named: saveUsingPOST_15
+2023-10-14 15:51:18,976 [main] Generating unique operation named: updateByIdUsingPUT_14
+2023-10-14 15:51:18,978 [main] Generating unique operation named: getByIdUsingGET_15
+2023-10-14 15:51:18,979 [main] Generating unique operation named: getSitePageUsingGET_1
+2023-10-14 15:51:18,981 [main] Generating unique operation named: saveUsingPOST_16
+2023-10-14 15:51:18,983 [main] Generating unique operation named: getByIdUsingGET_16
+2023-10-14 15:51:18,990 [main] Generating unique operation named: removeByIdUsingDELETE_18
+2023-10-14 15:51:18,993 [main] Generating unique operation named: saveUsingPOST_17
+2023-10-14 15:51:18,997 [main] Generating unique operation named: updateByIdUsingPUT_15
+2023-10-14 15:51:19,023 [main] Started CheckGroupCriteriaTest in 10.159 seconds (JVM running for 11.308)
+2023-10-14 15:51:19,220 [main] HikariPool-1 - Starting...
+2023-10-14 15:51:20,907 [main] HikariPool-1 - Start completed.
+2023-10-14 15:51:21,079 [SpringContextShutdownHook] Shutting down ExecutorService 'taskScheduler'
+2023-10-14 15:51:21,080 [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2023-10-14 15:51:21,102 [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-10-14 15:51:22,431 [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2023-10-14 16:01:52,383 [main] Starting CheckGroupCriteriaTest on DESKTOP-AGRJQJ0 with PID 1248 (started by complicated in E:\gitCoder\my-civ-eva\my-civ-eva)
+2023-10-14 16:01:52,384 [main] The following profiles are active: dev
+2023-10-14 16:01:53,554 [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-10-14 16:01:53,557 [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-14 16:01:53,606 [main] Finished Spring Data repository scanning in 33ms. Found 0 Redis repository interfaces.
+2023-10-14 16:01:54,690 [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@3f6f3cc' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:01:54,703 [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:01:54,724 [main] Bean 'redisCacheManagerConfig' of type [cn.swust.indigo.common.data.redis.RedisCacheManagerConfig$$EnhancerBySpringCGLIB$$586f99d8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:02:00,558 [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-10-14 16:02:00,791 [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6be8ce1b, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f908bc0, org.springframework.security.web.header.HeaderWriterFilter@5ad40184, org.springframework.security.web.authentication.logout.LogoutFilter@60bc308b, cn.swust.indigo.common.security.filter.TokenFilter@36e409e0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4ffa078d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26cdd4af, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c53bd49, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e3c36d, org.springframework.security.web.session.SessionManagementFilter@3d3b272a, org.springframework.security.web.access.ExceptionTranslationFilter@9cc0505, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@186f7434]
+2023-10-14 16:02:01,167 [main] Initializing ExecutorService 'applicationTaskExecutor'
+2023-10-14 16:02:01,593 [main] Initializing ExecutorService 'taskScheduler'
+2023-10-14 16:02:01,670 [main] Context refreshed
+2023-10-14 16:02:01,701 [main] Found 2 custom documentation plugin(s)
+2023-10-14 16:02:01,757 [main] Scanning for api listing references
+2023-10-14 16:02:01,955 [main] Generating unique operation named: getByIdUsingGET_1
+2023-10-14 16:02:01,982 [main] Generating unique operation named: removeByIdUsingDELETE_1
+2023-10-14 16:02:01,988 [main] Generating unique operation named: saveUsingPOST_1
+2023-10-14 16:02:01,996 [main] Generating unique operation named: getSysFileByIdUsingGET_1
+2023-10-14 16:02:02,009 [main] Generating unique operation named: removeByIdUsingDELETE_2
+2023-10-14 16:02:02,016 [main] Generating unique operation named: removeByIdUsingDELETE_3
+2023-10-14 16:02:02,022 [main] Generating unique operation named: saveUsingPOST_2
+2023-10-14 16:02:02,028 [main] Generating unique operation named: getByIdUsingGET_2
+2023-10-14 16:02:02,041 [main] Generating unique operation named: getTreeUsingGET_1
+2023-10-14 16:02:02,044 [main] Generating unique operation named: removeByIdUsingDELETE_4
+2023-10-14 16:02:02,048 [main] Generating unique operation named: saveUsingPOST_3
+2023-10-14 16:02:02,049 [main] Generating unique operation named: updateUsingPUT_1
+2023-10-14 16:02:02,054 [main] Generating unique operation named: getByIdUsingGET_3
+2023-10-14 16:02:02,067 [main] Generating unique operation named: removeByIdUsingDELETE_5
+2023-10-14 16:02:02,070 [main] Generating unique operation named: saveUsingPOST_4
+2023-10-14 16:02:02,073 [main] Generating unique operation named: updateByIdUsingPUT_1
+2023-10-14 16:02:02,075 [main] Generating unique operation named: getByIdUsingGET_4
+2023-10-14 16:02:02,086 [main] Generating unique operation named: removeByIdUsingDELETE_6
+2023-10-14 16:02:02,087 [main] Generating unique operation named: saveUsingPOST_5
+2023-10-14 16:02:02,088 [main] Generating unique operation named: updateByIdUsingPUT_2
+2023-10-14 16:02:02,091 [main] Generating unique operation named: getByIdUsingGET_5
+2023-10-14 16:02:02,092 [main] Generating unique operation named: getByParamIdUsingGET_1
+2023-10-14 16:02:02,102 [main] Generating unique operation named: removeByIdUsingDELETE_7
+2023-10-14 16:02:02,103 [main] Generating unique operation named: removeByParamIdUsingDELETE_1
+2023-10-14 16:02:02,107 [main] Generating unique operation named: saveUsingPOST_6
+2023-10-14 16:02:02,108 [main] Generating unique operation named: updateByIdUsingPUT_3
+2023-10-14 16:02:02,110 [main] Generating unique operation named: getByParamIdUsingGET_2
+2023-10-14 16:02:02,118 [main] Generating unique operation named: getRolePageUsingGET_1
+2023-10-14 16:02:02,120 [main] Generating unique operation named: removeByParamIdUsingDELETE_2
+2023-10-14 16:02:02,124 [main] Generating unique operation named: saveUsingPOST_7
+2023-10-14 16:02:02,128 [main] Generating unique operation named: updateUsingPUT_2
+2023-10-14 16:02:02,145 [main] Generating unique operation named: listUsingGET_1
+2023-10-14 16:02:02,156 [main] Generating unique operation named: userUsingGET_1
+2023-10-14 16:02:02,161 [main] Generating unique operation named: infoUsingGET_1
+2023-10-14 16:02:02,182 [main] Scanning for api listing references
+2023-10-14 16:02:02,190 [main] Generating unique operation named: getByIdUsingGET_6
+2023-10-14 16:02:02,195 [main] Generating unique operation named: removeByIdUsingDELETE_8
+2023-10-14 16:02:02,200 [main] Generating unique operation named: saveUsingPOST_8
+2023-10-14 16:02:02,202 [main] Generating unique operation named: updateByIdUsingPUT_4
+2023-10-14 16:02:02,207 [main] Generating unique operation named: addUsingPOST_1
+2023-10-14 16:02:02,210 [main] Generating unique operation named: getByIdUsingGET_7
+2023-10-14 16:02:02,216 [main] Generating unique operation named: getByIdUsingGET_8
+2023-10-14 16:02:02,226 [main] Generating unique operation named: removeByIdUsingDELETE_9
+2023-10-14 16:02:02,230 [main] Generating unique operation named: saveUsingPOST_9
+2023-10-14 16:02:02,231 [main] Generating unique operation named: updateByIdUsingPUT_5
+2023-10-14 16:02:02,235 [main] Generating unique operation named: getByIdUsingGET_9
+2023-10-14 16:02:02,247 [main] Generating unique operation named: removeByIdUsingDELETE_10
+2023-10-14 16:02:02,252 [main] Generating unique operation named: saveUsingPOST_10
+2023-10-14 16:02:02,253 [main] Generating unique operation named: updateByIdUsingPUT_6
+2023-10-14 16:02:02,267 [main] Generating unique operation named: commitReportUsingPUT_1
+2023-10-14 16:02:02,269 [main] Generating unique operation named: getByIdUsingGET_10
+2023-10-14 16:02:02,271 [main] Generating unique operation named: getCheckReportPageUsingGET_1
+2023-10-14 16:02:02,273 [main] Generating unique operation named: removeByIdUsingDELETE_11
+2023-10-14 16:02:02,274 [main] Generating unique operation named: saveUsingPOST_11
+2023-10-14 16:02:02,275 [main] Generating unique operation named: updateByIdUsingPUT_7
+2023-10-14 16:02:02,287 [main] Generating unique operation named: getCommitReportUsingGET_1
+2023-10-14 16:02:02,295 [main] Generating unique operation named: removeByIdUsingDELETE_12
+2023-10-14 16:02:02,302 [main] Generating unique operation named: updateByIdUsingPUT_8
+2023-10-14 16:02:02,303 [main] Generating unique operation named: updateByIdUsingPUT_9
+2023-10-14 16:02:02,340 [main] Generating unique operation named: removeByIdUsingDELETE_13
+2023-10-14 16:02:02,343 [main] Generating unique operation named: saveUsingPOST_12
+2023-10-14 16:02:02,349 [main] Generating unique operation named: updateByIdUsingPUT_10
+2023-10-14 16:02:02,357 [main] Generating unique operation named: getByIdUsingGET_11
+2023-10-14 16:02:02,366 [main] Generating unique operation named: removeByIdUsingDELETE_14
+2023-10-14 16:02:02,369 [main] Generating unique operation named: saveUsingPOST_13
+2023-10-14 16:02:02,371 [main] Generating unique operation named: updateByIdUsingPUT_11
+2023-10-14 16:02:02,377 [main] Generating unique operation named: getByIdUsingGET_12
+2023-10-14 16:02:02,381 [main] Generating unique operation named: removeByIdUsingDELETE_15
+2023-10-14 16:02:02,385 [main] Generating unique operation named: updateByIdUsingPUT_12
+2023-10-14 16:02:02,388 [main] Generating unique operation named: listUsingGET_2
+2023-10-14 16:02:02,391 [main] Generating unique operation named: saveUsingPUT_1
+2023-10-14 16:02:02,393 [main] Generating unique operation named: getByIdUsingGET_13
+2023-10-14 16:02:02,406 [main] Generating unique operation named: removeByIdUsingDELETE_16
+2023-10-14 16:02:02,411 [main] Generating unique operation named: saveUsingPOST_14
+2023-10-14 16:02:02,413 [main] Generating unique operation named: updateByIdUsingPUT_13
+2023-10-14 16:02:02,416 [main] Generating unique operation named: getByIdUsingGET_14
+2023-10-14 16:02:02,421 [main] Generating unique operation named: removeByIdUsingDELETE_17
+2023-10-14 16:02:02,425 [main] Generating unique operation named: saveUsingPOST_15
+2023-10-14 16:02:02,427 [main] Generating unique operation named: updateByIdUsingPUT_14
+2023-10-14 16:02:02,429 [main] Generating unique operation named: getByIdUsingGET_15
+2023-10-14 16:02:02,430 [main] Generating unique operation named: getSitePageUsingGET_1
+2023-10-14 16:02:02,433 [main] Generating unique operation named: saveUsingPOST_16
+2023-10-14 16:02:02,435 [main] Generating unique operation named: getByIdUsingGET_16
+2023-10-14 16:02:02,443 [main] Generating unique operation named: removeByIdUsingDELETE_18
+2023-10-14 16:02:02,445 [main] Generating unique operation named: saveUsingPOST_17
+2023-10-14 16:02:02,449 [main] Generating unique operation named: updateByIdUsingPUT_15
+2023-10-14 16:02:02,480 [main] Started CheckGroupCriteriaTest in 10.41 seconds (JVM running for 11.582)
+2023-10-14 16:02:02,676 [main] HikariPool-1 - Starting...
+2023-10-14 16:02:04,382 [main] HikariPool-1 - Start completed.
+2023-10-14 16:02:04,526 [SpringContextShutdownHook] Shutting down ExecutorService 'taskScheduler'
+2023-10-14 16:02:04,527 [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2023-10-14 16:02:04,550 [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-10-14 16:02:05,625 [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2023-10-14 16:24:19,428 [main] Starting CheckGroupCriteriaTest on DESKTOP-AGRJQJ0 with PID 1956 (started by complicated in E:\gitCoder\my-civ-eva\my-civ-eva)
+2023-10-14 16:24:19,430 [main] The following profiles are active: dev
+2023-10-14 16:24:20,750 [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-10-14 16:24:20,755 [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-14 16:24:20,812 [main] Finished Spring Data repository scanning in 35ms. Found 0 Redis repository interfaces.
+2023-10-14 16:24:21,925 [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@77d381e6' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:24:21,943 [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:24:21,962 [main] Bean 'redisCacheManagerConfig' of type [cn.swust.indigo.common.data.redis.RedisCacheManagerConfig$$EnhancerBySpringCGLIB$$586f99d8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:24:28,363 [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-10-14 16:24:28,636 [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6be8ce1b, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f908bc0, org.springframework.security.web.header.HeaderWriterFilter@5ad40184, org.springframework.security.web.authentication.logout.LogoutFilter@60bc308b, cn.swust.indigo.common.security.filter.TokenFilter@2d2fc130, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4ffa078d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26cdd4af, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c53bd49, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e3c36d, org.springframework.security.web.session.SessionManagementFilter@3d3b272a, org.springframework.security.web.access.ExceptionTranslationFilter@9cc0505, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@186f7434]
+2023-10-14 16:24:28,991 [main] Initializing ExecutorService 'applicationTaskExecutor'
+2023-10-14 16:24:29,487 [main] Initializing ExecutorService 'taskScheduler'
+2023-10-14 16:24:29,570 [main] Context refreshed
+2023-10-14 16:24:29,599 [main] Found 2 custom documentation plugin(s)
+2023-10-14 16:24:29,662 [main] Scanning for api listing references
+2023-10-14 16:24:29,882 [main] Generating unique operation named: getByIdUsingGET_1
+2023-10-14 16:24:29,912 [main] Generating unique operation named: removeByIdUsingDELETE_1
+2023-10-14 16:24:29,919 [main] Generating unique operation named: saveUsingPOST_1
+2023-10-14 16:24:29,929 [main] Generating unique operation named: getSysFileByIdUsingGET_1
+2023-10-14 16:24:29,943 [main] Generating unique operation named: removeByIdUsingDELETE_2
+2023-10-14 16:24:29,952 [main] Generating unique operation named: removeByIdUsingDELETE_3
+2023-10-14 16:24:29,959 [main] Generating unique operation named: saveUsingPOST_2
+2023-10-14 16:24:29,965 [main] Generating unique operation named: getByIdUsingGET_2
+2023-10-14 16:24:29,980 [main] Generating unique operation named: getTreeUsingGET_1
+2023-10-14 16:24:29,982 [main] Generating unique operation named: removeByIdUsingDELETE_4
+2023-10-14 16:24:29,988 [main] Generating unique operation named: saveUsingPOST_3
+2023-10-14 16:24:29,989 [main] Generating unique operation named: updateUsingPUT_1
+2023-10-14 16:24:29,994 [main] Generating unique operation named: getByIdUsingGET_3
+2023-10-14 16:24:30,006 [main] Generating unique operation named: removeByIdUsingDELETE_5
+2023-10-14 16:24:30,010 [main] Generating unique operation named: saveUsingPOST_4
+2023-10-14 16:24:30,013 [main] Generating unique operation named: updateByIdUsingPUT_1
+2023-10-14 16:24:30,016 [main] Generating unique operation named: getByIdUsingGET_4
+2023-10-14 16:24:30,030 [main] Generating unique operation named: removeByIdUsingDELETE_6
+2023-10-14 16:24:30,032 [main] Generating unique operation named: saveUsingPOST_5
+2023-10-14 16:24:30,034 [main] Generating unique operation named: updateByIdUsingPUT_2
+2023-10-14 16:24:30,037 [main] Generating unique operation named: getByIdUsingGET_5
+2023-10-14 16:24:30,039 [main] Generating unique operation named: getByParamIdUsingGET_1
+2023-10-14 16:24:30,051 [main] Generating unique operation named: removeByIdUsingDELETE_7
+2023-10-14 16:24:30,053 [main] Generating unique operation named: removeByParamIdUsingDELETE_1
+2023-10-14 16:24:30,057 [main] Generating unique operation named: saveUsingPOST_6
+2023-10-14 16:24:30,058 [main] Generating unique operation named: updateByIdUsingPUT_3
+2023-10-14 16:24:30,060 [main] Generating unique operation named: getByParamIdUsingGET_2
+2023-10-14 16:24:30,068 [main] Generating unique operation named: getRolePageUsingGET_1
+2023-10-14 16:24:30,070 [main] Generating unique operation named: removeByParamIdUsingDELETE_2
+2023-10-14 16:24:30,073 [main] Generating unique operation named: saveUsingPOST_7
+2023-10-14 16:24:30,078 [main] Generating unique operation named: updateUsingPUT_2
+2023-10-14 16:24:30,097 [main] Generating unique operation named: listUsingGET_1
+2023-10-14 16:24:30,112 [main] Generating unique operation named: userUsingGET_1
+2023-10-14 16:24:30,122 [main] Generating unique operation named: infoUsingGET_1
+2023-10-14 16:24:30,149 [main] Scanning for api listing references
+2023-10-14 16:24:30,157 [main] Generating unique operation named: getByIdUsingGET_6
+2023-10-14 16:24:30,163 [main] Generating unique operation named: removeByIdUsingDELETE_8
+2023-10-14 16:24:30,167 [main] Generating unique operation named: saveUsingPOST_8
+2023-10-14 16:24:30,170 [main] Generating unique operation named: updateByIdUsingPUT_4
+2023-10-14 16:24:30,174 [main] Generating unique operation named: addUsingPOST_1
+2023-10-14 16:24:30,178 [main] Generating unique operation named: getByIdUsingGET_7
+2023-10-14 16:24:30,189 [main] Generating unique operation named: getByIdUsingGET_8
+2023-10-14 16:24:30,196 [main] Generating unique operation named: removeByIdUsingDELETE_9
+2023-10-14 16:24:30,199 [main] Generating unique operation named: saveUsingPOST_9
+2023-10-14 16:24:30,202 [main] Generating unique operation named: updateByIdUsingPUT_5
+2023-10-14 16:24:30,205 [main] Generating unique operation named: getByIdUsingGET_9
+2023-10-14 16:24:30,215 [main] Generating unique operation named: removeByIdUsingDELETE_10
+2023-10-14 16:24:30,222 [main] Generating unique operation named: saveUsingPOST_10
+2023-10-14 16:24:30,223 [main] Generating unique operation named: updateByIdUsingPUT_6
+2023-10-14 16:24:30,238 [main] Generating unique operation named: commitReportUsingPUT_1
+2023-10-14 16:24:30,239 [main] Generating unique operation named: getByIdUsingGET_10
+2023-10-14 16:24:30,242 [main] Generating unique operation named: getCheckReportPageUsingGET_1
+2023-10-14 16:24:30,243 [main] Generating unique operation named: removeByIdUsingDELETE_11
+2023-10-14 16:24:30,244 [main] Generating unique operation named: saveUsingPOST_11
+2023-10-14 16:24:30,245 [main] Generating unique operation named: updateByIdUsingPUT_7
+2023-10-14 16:24:30,261 [main] Generating unique operation named: getCommitReportUsingGET_1
+2023-10-14 16:24:30,272 [main] Generating unique operation named: removeByIdUsingDELETE_12
+2023-10-14 16:24:30,280 [main] Generating unique operation named: updateByIdUsingPUT_8
+2023-10-14 16:24:30,281 [main] Generating unique operation named: updateByIdUsingPUT_9
+2023-10-14 16:24:30,331 [main] Generating unique operation named: removeByIdUsingDELETE_13
+2023-10-14 16:24:30,339 [main] Generating unique operation named: saveUsingPOST_12
+2023-10-14 16:24:30,351 [main] Generating unique operation named: updateByIdUsingPUT_10
+2023-10-14 16:24:30,359 [main] Generating unique operation named: getByIdUsingGET_11
+2023-10-14 16:24:30,374 [main] Generating unique operation named: removeByIdUsingDELETE_14
+2023-10-14 16:24:30,378 [main] Generating unique operation named: saveUsingPOST_13
+2023-10-14 16:24:30,380 [main] Generating unique operation named: updateByIdUsingPUT_11
+2023-10-14 16:24:30,389 [main] Generating unique operation named: getByIdUsingGET_12
+2023-10-14 16:24:30,394 [main] Generating unique operation named: removeByIdUsingDELETE_15
+2023-10-14 16:24:30,401 [main] Generating unique operation named: updateByIdUsingPUT_12
+2023-10-14 16:24:30,404 [main] Generating unique operation named: listUsingGET_2
+2023-10-14 16:24:30,408 [main] Generating unique operation named: saveUsingPUT_1
+2023-10-14 16:24:30,411 [main] Generating unique operation named: getByIdUsingGET_13
+2023-10-14 16:24:30,424 [main] Generating unique operation named: removeByIdUsingDELETE_16
+2023-10-14 16:24:30,428 [main] Generating unique operation named: saveUsingPOST_14
+2023-10-14 16:24:30,429 [main] Generating unique operation named: updateByIdUsingPUT_13
+2023-10-14 16:24:30,432 [main] Generating unique operation named: getByIdUsingGET_14
+2023-10-14 16:24:30,437 [main] Generating unique operation named: removeByIdUsingDELETE_17
+2023-10-14 16:24:30,440 [main] Generating unique operation named: saveUsingPOST_15
+2023-10-14 16:24:30,441 [main] Generating unique operation named: updateByIdUsingPUT_14
+2023-10-14 16:24:30,443 [main] Generating unique operation named: getByIdUsingGET_15
+2023-10-14 16:24:30,444 [main] Generating unique operation named: getSitePageUsingGET_1
+2023-10-14 16:24:30,445 [main] Generating unique operation named: saveUsingPOST_16
+2023-10-14 16:24:30,447 [main] Generating unique operation named: getByIdUsingGET_16
+2023-10-14 16:24:30,454 [main] Generating unique operation named: removeByIdUsingDELETE_18
+2023-10-14 16:24:30,456 [main] Generating unique operation named: saveUsingPOST_17
+2023-10-14 16:24:30,459 [main] Generating unique operation named: updateByIdUsingPUT_15
+2023-10-14 16:24:30,484 [main] Started CheckGroupCriteriaTest in 11.459 seconds (JVM running for 12.872)
+2023-10-14 16:24:30,701 [main] HikariPool-1 - Starting...
+2023-10-14 16:24:32,431 [main] HikariPool-1 - Start completed.
+2023-10-14 16:24:32,557 [SpringContextShutdownHook] Shutting down ExecutorService 'taskScheduler'
+2023-10-14 16:24:32,558 [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2023-10-14 16:24:32,588 [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-10-14 16:24:33,107 [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2023-10-14 16:26:22,671 [main] Starting CheckGroupCriteriaTest on DESKTOP-AGRJQJ0 with PID 11172 (started by complicated in E:\gitCoder\my-civ-eva\my-civ-eva)
+2023-10-14 16:26:22,673 [main] The following profiles are active: dev
+2023-10-14 16:26:24,141 [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-10-14 16:26:24,145 [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-14 16:26:24,203 [main] Finished Spring Data repository scanning in 38ms. Found 0 Redis repository interfaces.
+2023-10-14 16:26:25,458 [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@3f6f3cc' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:26:25,473 [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:26:25,492 [main] Bean 'redisCacheManagerConfig' of type [cn.swust.indigo.common.data.redis.RedisCacheManagerConfig$$EnhancerBySpringCGLIB$$586f99d8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:26:31,920 [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-10-14 16:26:32,202 [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6be8ce1b, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f908bc0, org.springframework.security.web.header.HeaderWriterFilter@5ad40184, org.springframework.security.web.authentication.logout.LogoutFilter@60bc308b, cn.swust.indigo.common.security.filter.TokenFilter@2d2fc130, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4ffa078d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26cdd4af, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c53bd49, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e3c36d, org.springframework.security.web.session.SessionManagementFilter@3d3b272a, org.springframework.security.web.access.ExceptionTranslationFilter@9cc0505, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@186f7434]
+2023-10-14 16:26:32,601 [main] Initializing ExecutorService 'applicationTaskExecutor'
+2023-10-14 16:26:33,137 [main] Initializing ExecutorService 'taskScheduler'
+2023-10-14 16:26:33,224 [main] Context refreshed
+2023-10-14 16:26:33,259 [main] Found 2 custom documentation plugin(s)
+2023-10-14 16:26:33,330 [main] Scanning for api listing references
+2023-10-14 16:26:33,546 [main] Generating unique operation named: getByIdUsingGET_1
+2023-10-14 16:26:33,575 [main] Generating unique operation named: removeByIdUsingDELETE_1
+2023-10-14 16:26:33,582 [main] Generating unique operation named: saveUsingPOST_1
+2023-10-14 16:26:33,590 [main] Generating unique operation named: getSysFileByIdUsingGET_1
+2023-10-14 16:26:33,603 [main] Generating unique operation named: removeByIdUsingDELETE_2
+2023-10-14 16:26:33,613 [main] Generating unique operation named: removeByIdUsingDELETE_3
+2023-10-14 16:26:33,620 [main] Generating unique operation named: saveUsingPOST_2
+2023-10-14 16:26:33,626 [main] Generating unique operation named: getByIdUsingGET_2
+2023-10-14 16:26:33,641 [main] Generating unique operation named: getTreeUsingGET_1
+2023-10-14 16:26:33,644 [main] Generating unique operation named: removeByIdUsingDELETE_4
+2023-10-14 16:26:33,650 [main] Generating unique operation named: saveUsingPOST_3
+2023-10-14 16:26:33,652 [main] Generating unique operation named: updateUsingPUT_1
+2023-10-14 16:26:33,658 [main] Generating unique operation named: getByIdUsingGET_3
+2023-10-14 16:26:33,670 [main] Generating unique operation named: removeByIdUsingDELETE_5
+2023-10-14 16:26:33,675 [main] Generating unique operation named: saveUsingPOST_4
+2023-10-14 16:26:33,680 [main] Generating unique operation named: updateByIdUsingPUT_1
+2023-10-14 16:26:33,683 [main] Generating unique operation named: getByIdUsingGET_4
+2023-10-14 16:26:33,694 [main] Generating unique operation named: removeByIdUsingDELETE_6
+2023-10-14 16:26:33,696 [main] Generating unique operation named: saveUsingPOST_5
+2023-10-14 16:26:33,698 [main] Generating unique operation named: updateByIdUsingPUT_2
+2023-10-14 16:26:33,700 [main] Generating unique operation named: getByIdUsingGET_5
+2023-10-14 16:26:33,701 [main] Generating unique operation named: getByParamIdUsingGET_1
+2023-10-14 16:26:33,711 [main] Generating unique operation named: removeByIdUsingDELETE_7
+2023-10-14 16:26:33,714 [main] Generating unique operation named: removeByParamIdUsingDELETE_1
+2023-10-14 16:26:33,718 [main] Generating unique operation named: saveUsingPOST_6
+2023-10-14 16:26:33,719 [main] Generating unique operation named: updateByIdUsingPUT_3
+2023-10-14 16:26:33,722 [main] Generating unique operation named: getByParamIdUsingGET_2
+2023-10-14 16:26:33,730 [main] Generating unique operation named: getRolePageUsingGET_1
+2023-10-14 16:26:33,732 [main] Generating unique operation named: removeByParamIdUsingDELETE_2
+2023-10-14 16:26:33,736 [main] Generating unique operation named: saveUsingPOST_7
+2023-10-14 16:26:33,740 [main] Generating unique operation named: updateUsingPUT_2
+2023-10-14 16:26:33,760 [main] Generating unique operation named: listUsingGET_1
+2023-10-14 16:26:33,776 [main] Generating unique operation named: userUsingGET_1
+2023-10-14 16:26:33,784 [main] Generating unique operation named: infoUsingGET_1
+2023-10-14 16:26:33,810 [main] Scanning for api listing references
+2023-10-14 16:26:33,819 [main] Generating unique operation named: getByIdUsingGET_6
+2023-10-14 16:26:33,825 [main] Generating unique operation named: removeByIdUsingDELETE_8
+2023-10-14 16:26:33,829 [main] Generating unique operation named: saveUsingPOST_8
+2023-10-14 16:26:33,831 [main] Generating unique operation named: updateByIdUsingPUT_4
+2023-10-14 16:26:33,836 [main] Generating unique operation named: addUsingPOST_1
+2023-10-14 16:26:33,839 [main] Generating unique operation named: getByIdUsingGET_7
+2023-10-14 16:26:33,848 [main] Generating unique operation named: getByIdUsingGET_8
+2023-10-14 16:26:33,859 [main] Generating unique operation named: removeByIdUsingDELETE_9
+2023-10-14 16:26:33,862 [main] Generating unique operation named: saveUsingPOST_9
+2023-10-14 16:26:33,864 [main] Generating unique operation named: updateByIdUsingPUT_5
+2023-10-14 16:26:33,866 [main] Generating unique operation named: getByIdUsingGET_9
+2023-10-14 16:26:33,873 [main] Generating unique operation named: removeByIdUsingDELETE_10
+2023-10-14 16:26:33,878 [main] Generating unique operation named: saveUsingPOST_10
+2023-10-14 16:26:33,880 [main] Generating unique operation named: updateByIdUsingPUT_6
+2023-10-14 16:26:33,891 [main] Generating unique operation named: commitReportUsingPUT_1
+2023-10-14 16:26:33,892 [main] Generating unique operation named: getByIdUsingGET_10
+2023-10-14 16:26:33,894 [main] Generating unique operation named: getCheckReportPageUsingGET_1
+2023-10-14 16:26:33,896 [main] Generating unique operation named: removeByIdUsingDELETE_11
+2023-10-14 16:26:33,897 [main] Generating unique operation named: saveUsingPOST_11
+2023-10-14 16:26:33,899 [main] Generating unique operation named: updateByIdUsingPUT_7
+2023-10-14 16:26:33,910 [main] Generating unique operation named: getCommitReportUsingGET_1
+2023-10-14 16:26:33,919 [main] Generating unique operation named: removeByIdUsingDELETE_12
+2023-10-14 16:26:33,926 [main] Generating unique operation named: updateByIdUsingPUT_8
+2023-10-14 16:26:33,927 [main] Generating unique operation named: updateByIdUsingPUT_9
+2023-10-14 16:26:33,969 [main] Generating unique operation named: removeByIdUsingDELETE_13
+2023-10-14 16:26:33,972 [main] Generating unique operation named: saveUsingPOST_12
+2023-10-14 16:26:33,979 [main] Generating unique operation named: updateByIdUsingPUT_10
+2023-10-14 16:26:33,985 [main] Generating unique operation named: getByIdUsingGET_11
+2023-10-14 16:26:33,995 [main] Generating unique operation named: removeByIdUsingDELETE_14
+2023-10-14 16:26:34,001 [main] Generating unique operation named: saveUsingPOST_13
+2023-10-14 16:26:34,003 [main] Generating unique operation named: updateByIdUsingPUT_11
+2023-10-14 16:26:34,009 [main] Generating unique operation named: getByIdUsingGET_12
+2023-10-14 16:26:34,014 [main] Generating unique operation named: removeByIdUsingDELETE_15
+2023-10-14 16:26:34,020 [main] Generating unique operation named: updateByIdUsingPUT_12
+2023-10-14 16:26:34,022 [main] Generating unique operation named: listUsingGET_2
+2023-10-14 16:26:34,026 [main] Generating unique operation named: saveUsingPUT_1
+2023-10-14 16:26:34,029 [main] Generating unique operation named: getByIdUsingGET_13
+2023-10-14 16:26:34,045 [main] Generating unique operation named: removeByIdUsingDELETE_16
+2023-10-14 16:26:34,048 [main] Generating unique operation named: saveUsingPOST_14
+2023-10-14 16:26:34,050 [main] Generating unique operation named: updateByIdUsingPUT_13
+2023-10-14 16:26:34,052 [main] Generating unique operation named: getByIdUsingGET_14
+2023-10-14 16:26:34,056 [main] Generating unique operation named: removeByIdUsingDELETE_17
+2023-10-14 16:26:34,059 [main] Generating unique operation named: saveUsingPOST_15
+2023-10-14 16:26:34,061 [main] Generating unique operation named: updateByIdUsingPUT_14
+2023-10-14 16:26:34,064 [main] Generating unique operation named: getByIdUsingGET_15
+2023-10-14 16:26:34,065 [main] Generating unique operation named: getSitePageUsingGET_1
+2023-10-14 16:26:34,068 [main] Generating unique operation named: saveUsingPOST_16
+2023-10-14 16:26:34,069 [main] Generating unique operation named: getByIdUsingGET_16
+2023-10-14 16:26:34,077 [main] Generating unique operation named: removeByIdUsingDELETE_18
+2023-10-14 16:26:34,081 [main] Generating unique operation named: saveUsingPOST_17
+2023-10-14 16:26:34,084 [main] Generating unique operation named: updateByIdUsingPUT_15
+2023-10-14 16:26:34,108 [main] Started CheckGroupCriteriaTest in 11.788 seconds (JVM running for 13.113)
+2023-10-14 16:26:34,301 [main] HikariPool-1 - Starting...
+2023-10-14 16:26:35,060 [main] HikariPool-1 - Start completed.
+2023-10-14 16:26:35,186 [SpringContextShutdownHook] Shutting down ExecutorService 'taskScheduler'
+2023-10-14 16:26:35,187 [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2023-10-14 16:26:35,211 [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-10-14 16:26:35,677 [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2023-10-14 16:27:09,341 [main] Starting CheckGroupCriteriaTest on DESKTOP-AGRJQJ0 with PID 9152 (started by complicated in E:\gitCoder\my-civ-eva\my-civ-eva)
+2023-10-14 16:27:09,344 [main] The following profiles are active: dev
+2023-10-14 16:27:10,633 [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-10-14 16:27:10,636 [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-14 16:27:10,692 [main] Finished Spring Data repository scanning in 39ms. Found 0 Redis repository interfaces.
+2023-10-14 16:27:11,791 [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@77d381e6' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:27:11,809 [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:27:11,828 [main] Bean 'redisCacheManagerConfig' of type [cn.swust.indigo.common.data.redis.RedisCacheManagerConfig$$EnhancerBySpringCGLIB$$586f99d8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:27:18,273 [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-10-14 16:27:18,559 [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6be8ce1b, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f908bc0, org.springframework.security.web.header.HeaderWriterFilter@5ad40184, org.springframework.security.web.authentication.logout.LogoutFilter@60bc308b, cn.swust.indigo.common.security.filter.TokenFilter@2d2fc130, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4ffa078d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26cdd4af, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c53bd49, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e3c36d, org.springframework.security.web.session.SessionManagementFilter@3d3b272a, org.springframework.security.web.access.ExceptionTranslationFilter@9cc0505, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@186f7434]
+2023-10-14 16:27:18,915 [main] Initializing ExecutorService 'applicationTaskExecutor'
+2023-10-14 16:27:19,375 [main] Initializing ExecutorService 'taskScheduler'
+2023-10-14 16:27:19,465 [main] Context refreshed
+2023-10-14 16:27:19,493 [main] Found 2 custom documentation plugin(s)
+2023-10-14 16:27:19,552 [main] Scanning for api listing references
+2023-10-14 16:27:19,757 [main] Generating unique operation named: getByIdUsingGET_1
+2023-10-14 16:27:19,791 [main] Generating unique operation named: removeByIdUsingDELETE_1
+2023-10-14 16:27:19,798 [main] Generating unique operation named: saveUsingPOST_1
+2023-10-14 16:27:19,806 [main] Generating unique operation named: getSysFileByIdUsingGET_1
+2023-10-14 16:27:19,820 [main] Generating unique operation named: removeByIdUsingDELETE_2
+2023-10-14 16:27:19,830 [main] Generating unique operation named: removeByIdUsingDELETE_3
+2023-10-14 16:27:19,836 [main] Generating unique operation named: saveUsingPOST_2
+2023-10-14 16:27:19,843 [main] Generating unique operation named: getByIdUsingGET_2
+2023-10-14 16:27:19,858 [main] Generating unique operation named: getTreeUsingGET_1
+2023-10-14 16:27:19,860 [main] Generating unique operation named: removeByIdUsingDELETE_4
+2023-10-14 16:27:19,864 [main] Generating unique operation named: saveUsingPOST_3
+2023-10-14 16:27:19,865 [main] Generating unique operation named: updateUsingPUT_1
+2023-10-14 16:27:19,871 [main] Generating unique operation named: getByIdUsingGET_3
+2023-10-14 16:27:19,883 [main] Generating unique operation named: removeByIdUsingDELETE_5
+2023-10-14 16:27:19,887 [main] Generating unique operation named: saveUsingPOST_4
+2023-10-14 16:27:19,890 [main] Generating unique operation named: updateByIdUsingPUT_1
+2023-10-14 16:27:19,893 [main] Generating unique operation named: getByIdUsingGET_4
+2023-10-14 16:27:19,905 [main] Generating unique operation named: removeByIdUsingDELETE_6
+2023-10-14 16:27:19,906 [main] Generating unique operation named: saveUsingPOST_5
+2023-10-14 16:27:19,908 [main] Generating unique operation named: updateByIdUsingPUT_2
+2023-10-14 16:27:19,912 [main] Generating unique operation named: getByIdUsingGET_5
+2023-10-14 16:27:19,914 [main] Generating unique operation named: getByParamIdUsingGET_1
+2023-10-14 16:27:19,927 [main] Generating unique operation named: removeByIdUsingDELETE_7
+2023-10-14 16:27:19,928 [main] Generating unique operation named: removeByParamIdUsingDELETE_1
+2023-10-14 16:27:19,932 [main] Generating unique operation named: saveUsingPOST_6
+2023-10-14 16:27:19,933 [main] Generating unique operation named: updateByIdUsingPUT_3
+2023-10-14 16:27:19,935 [main] Generating unique operation named: getByParamIdUsingGET_2
+2023-10-14 16:27:19,944 [main] Generating unique operation named: getRolePageUsingGET_1
+2023-10-14 16:27:19,946 [main] Generating unique operation named: removeByParamIdUsingDELETE_2
+2023-10-14 16:27:19,950 [main] Generating unique operation named: saveUsingPOST_7
+2023-10-14 16:27:19,955 [main] Generating unique operation named: updateUsingPUT_2
+2023-10-14 16:27:19,975 [main] Generating unique operation named: listUsingGET_1
+2023-10-14 16:27:19,993 [main] Generating unique operation named: userUsingGET_1
+2023-10-14 16:27:20,000 [main] Generating unique operation named: infoUsingGET_1
+2023-10-14 16:27:20,024 [main] Scanning for api listing references
+2023-10-14 16:27:20,033 [main] Generating unique operation named: getByIdUsingGET_6
+2023-10-14 16:27:20,040 [main] Generating unique operation named: removeByIdUsingDELETE_8
+2023-10-14 16:27:20,046 [main] Generating unique operation named: saveUsingPOST_8
+2023-10-14 16:27:20,048 [main] Generating unique operation named: updateByIdUsingPUT_4
+2023-10-14 16:27:20,053 [main] Generating unique operation named: addUsingPOST_1
+2023-10-14 16:27:20,055 [main] Generating unique operation named: getByIdUsingGET_7
+2023-10-14 16:27:20,063 [main] Generating unique operation named: getByIdUsingGET_8
+2023-10-14 16:27:20,073 [main] Generating unique operation named: removeByIdUsingDELETE_9
+2023-10-14 16:27:20,077 [main] Generating unique operation named: saveUsingPOST_9
+2023-10-14 16:27:20,079 [main] Generating unique operation named: updateByIdUsingPUT_5
+2023-10-14 16:27:20,081 [main] Generating unique operation named: getByIdUsingGET_9
+2023-10-14 16:27:20,089 [main] Generating unique operation named: removeByIdUsingDELETE_10
+2023-10-14 16:27:20,094 [main] Generating unique operation named: saveUsingPOST_10
+2023-10-14 16:27:20,095 [main] Generating unique operation named: updateByIdUsingPUT_6
+2023-10-14 16:27:20,106 [main] Generating unique operation named: commitReportUsingPUT_1
+2023-10-14 16:27:20,107 [main] Generating unique operation named: getByIdUsingGET_10
+2023-10-14 16:27:20,110 [main] Generating unique operation named: getCheckReportPageUsingGET_1
+2023-10-14 16:27:20,112 [main] Generating unique operation named: removeByIdUsingDELETE_11
+2023-10-14 16:27:20,113 [main] Generating unique operation named: saveUsingPOST_11
+2023-10-14 16:27:20,114 [main] Generating unique operation named: updateByIdUsingPUT_7
+2023-10-14 16:27:20,127 [main] Generating unique operation named: getCommitReportUsingGET_1
+2023-10-14 16:27:20,135 [main] Generating unique operation named: removeByIdUsingDELETE_12
+2023-10-14 16:27:20,145 [main] Generating unique operation named: updateByIdUsingPUT_8
+2023-10-14 16:27:20,146 [main] Generating unique operation named: updateByIdUsingPUT_9
+2023-10-14 16:27:20,189 [main] Generating unique operation named: removeByIdUsingDELETE_13
+2023-10-14 16:27:20,195 [main] Generating unique operation named: saveUsingPOST_12
+2023-10-14 16:27:20,201 [main] Generating unique operation named: updateByIdUsingPUT_10
+2023-10-14 16:27:20,209 [main] Generating unique operation named: getByIdUsingGET_11
+2023-10-14 16:27:20,221 [main] Generating unique operation named: removeByIdUsingDELETE_14
+2023-10-14 16:27:20,229 [main] Generating unique operation named: saveUsingPOST_13
+2023-10-14 16:27:20,233 [main] Generating unique operation named: updateByIdUsingPUT_11
+2023-10-14 16:27:20,243 [main] Generating unique operation named: getByIdUsingGET_12
+2023-10-14 16:27:20,251 [main] Generating unique operation named: removeByIdUsingDELETE_15
+2023-10-14 16:27:20,257 [main] Generating unique operation named: updateByIdUsingPUT_12
+2023-10-14 16:27:20,261 [main] Generating unique operation named: listUsingGET_2
+2023-10-14 16:27:20,265 [main] Generating unique operation named: saveUsingPUT_1
+2023-10-14 16:27:20,269 [main] Generating unique operation named: getByIdUsingGET_13
+2023-10-14 16:27:20,289 [main] Generating unique operation named: removeByIdUsingDELETE_16
+2023-10-14 16:27:20,296 [main] Generating unique operation named: saveUsingPOST_14
+2023-10-14 16:27:20,299 [main] Generating unique operation named: updateByIdUsingPUT_13
+2023-10-14 16:27:20,302 [main] Generating unique operation named: getByIdUsingGET_14
+2023-10-14 16:27:20,309 [main] Generating unique operation named: removeByIdUsingDELETE_17
+2023-10-14 16:27:20,314 [main] Generating unique operation named: saveUsingPOST_15
+2023-10-14 16:27:20,316 [main] Generating unique operation named: updateByIdUsingPUT_14
+2023-10-14 16:27:20,318 [main] Generating unique operation named: getByIdUsingGET_15
+2023-10-14 16:27:20,320 [main] Generating unique operation named: getSitePageUsingGET_1
+2023-10-14 16:27:20,322 [main] Generating unique operation named: saveUsingPOST_16
+2023-10-14 16:27:20,324 [main] Generating unique operation named: getByIdUsingGET_16
+2023-10-14 16:27:20,334 [main] Generating unique operation named: removeByIdUsingDELETE_18
+2023-10-14 16:27:20,337 [main] Generating unique operation named: saveUsingPOST_17
+2023-10-14 16:27:20,341 [main] Generating unique operation named: updateByIdUsingPUT_15
+2023-10-14 16:27:20,387 [main] Started CheckGroupCriteriaTest in 11.429 seconds (JVM running for 12.697)
+2023-10-14 16:27:20,739 [main] HikariPool-1 - Starting...
+2023-10-14 16:27:21,512 [main] HikariPool-1 - Start completed.
+2023-10-14 16:27:21,638 [SpringContextShutdownHook] Shutting down ExecutorService 'taskScheduler'
+2023-10-14 16:27:21,639 [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2023-10-14 16:27:21,697 [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-10-14 16:27:22,121 [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2023-10-14 16:34:26,200 [main] Starting CheckGroupCriteriaTest on DESKTOP-AGRJQJ0 with PID 9972 (started by complicated in E:\gitCoder\my-civ-eva\my-civ-eva)
+2023-10-14 16:34:26,202 [main] The following profiles are active: dev
+2023-10-14 16:34:27,353 [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-10-14 16:34:27,356 [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-14 16:34:27,404 [main] Finished Spring Data repository scanning in 31ms. Found 0 Redis repository interfaces.
+2023-10-14 16:34:28,655 [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@77d381e6' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:34:28,681 [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:34:28,722 [main] Bean 'redisCacheManagerConfig' of type [cn.swust.indigo.common.data.redis.RedisCacheManagerConfig$$EnhancerBySpringCGLIB$$586f99d8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-14 16:34:37,541 [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-10-14 16:34:37,964 [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6be8ce1b, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f908bc0, org.springframework.security.web.header.HeaderWriterFilter@5ad40184, org.springframework.security.web.authentication.logout.LogoutFilter@60bc308b, cn.swust.indigo.common.security.filter.TokenFilter@36e409e0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4ffa078d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26cdd4af, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c53bd49, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e3c36d, org.springframework.security.web.session.SessionManagementFilter@3d3b272a, org.springframework.security.web.access.ExceptionTranslationFilter@9cc0505, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@186f7434]
+2023-10-14 16:34:38,559 [main] Initializing ExecutorService 'applicationTaskExecutor'
+2023-10-14 16:34:39,259 [main] Initializing ExecutorService 'taskScheduler'
+2023-10-14 16:34:39,354 [main] Context refreshed
+2023-10-14 16:34:39,396 [main] Found 2 custom documentation plugin(s)
+2023-10-14 16:34:39,504 [main] Scanning for api listing references
+2023-10-14 16:34:39,824 [main] Generating unique operation named: getByIdUsingGET_1
+2023-10-14 16:34:39,872 [main] Generating unique operation named: removeByIdUsingDELETE_1
+2023-10-14 16:34:39,884 [main] Generating unique operation named: saveUsingPOST_1
+2023-10-14 16:34:39,896 [main] Generating unique operation named: getSysFileByIdUsingGET_1
+2023-10-14 16:34:39,920 [main] Generating unique operation named: removeByIdUsingDELETE_2
+2023-10-14 16:34:39,934 [main] Generating unique operation named: removeByIdUsingDELETE_3
+2023-10-14 16:34:39,940 [main] Generating unique operation named: saveUsingPOST_2
+2023-10-14 16:34:39,951 [main] Generating unique operation named: getByIdUsingGET_2
+2023-10-14 16:34:39,970 [main] Generating unique operation named: getTreeUsingGET_1
+2023-10-14 16:34:39,973 [main] Generating unique operation named: removeByIdUsingDELETE_4
+2023-10-14 16:34:39,978 [main] Generating unique operation named: saveUsingPOST_3
+2023-10-14 16:34:39,982 [main] Generating unique operation named: updateUsingPUT_1
+2023-10-14 16:34:39,992 [main] Generating unique operation named: getByIdUsingGET_3
+2023-10-14 16:34:40,013 [main] Generating unique operation named: removeByIdUsingDELETE_5
+2023-10-14 16:34:40,021 [main] Generating unique operation named: saveUsingPOST_4
+2023-10-14 16:34:40,026 [main] Generating unique operation named: updateByIdUsingPUT_1
+2023-10-14 16:34:40,031 [main] Generating unique operation named: getByIdUsingGET_4
+2023-10-14 16:34:40,057 [main] Generating unique operation named: removeByIdUsingDELETE_6
+2023-10-14 16:34:40,059 [main] Generating unique operation named: saveUsingPOST_5
+2023-10-14 16:34:40,062 [main] Generating unique operation named: updateByIdUsingPUT_2
+2023-10-14 16:34:40,067 [main] Generating unique operation named: getByIdUsingGET_5
+2023-10-14 16:34:40,070 [main] Generating unique operation named: getByParamIdUsingGET_1
+2023-10-14 16:34:40,088 [main] Generating unique operation named: removeByIdUsingDELETE_7
+2023-10-14 16:34:40,090 [main] Generating unique operation named: removeByParamIdUsingDELETE_1
+2023-10-14 16:34:40,095 [main] Generating unique operation named: saveUsingPOST_6
+2023-10-14 16:34:40,101 [main] Generating unique operation named: updateByIdUsingPUT_3
+2023-10-14 16:34:40,104 [main] Generating unique operation named: getByParamIdUsingGET_2
+2023-10-14 16:34:40,115 [main] Generating unique operation named: getRolePageUsingGET_1
+2023-10-14 16:34:40,119 [main] Generating unique operation named: removeByParamIdUsingDELETE_2
+2023-10-14 16:34:40,126 [main] Generating unique operation named: saveUsingPOST_7
+2023-10-14 16:34:40,135 [main] Generating unique operation named: updateUsingPUT_2
+2023-10-14 16:34:40,157 [main] Generating unique operation named: listUsingGET_1
+2023-10-14 16:34:40,172 [main] Generating unique operation named: userUsingGET_1
+2023-10-14 16:34:40,177 [main] Generating unique operation named: infoUsingGET_1
+2023-10-14 16:34:40,197 [main] Scanning for api listing references
+2023-10-14 16:34:40,205 [main] Generating unique operation named: getByIdUsingGET_6
+2023-10-14 16:34:40,212 [main] Generating unique operation named: removeByIdUsingDELETE_8
+2023-10-14 16:34:40,217 [main] Generating unique operation named: saveUsingPOST_8
+2023-10-14 16:34:40,219 [main] Generating unique operation named: updateByIdUsingPUT_4
+2023-10-14 16:34:40,222 [main] Generating unique operation named: addUsingPOST_1
+2023-10-14 16:34:40,225 [main] Generating unique operation named: getByIdUsingGET_7
+2023-10-14 16:34:40,234 [main] Generating unique operation named: getByIdUsingGET_8
+2023-10-14 16:34:40,245 [main] Generating unique operation named: removeByIdUsingDELETE_9
+2023-10-14 16:34:40,249 [main] Generating unique operation named: saveUsingPOST_9
+2023-10-14 16:34:40,251 [main] Generating unique operation named: updateByIdUsingPUT_5
+2023-10-14 16:34:40,254 [main] Generating unique operation named: getByIdUsingGET_9
+2023-10-14 16:34:40,263 [main] Generating unique operation named: removeByIdUsingDELETE_10
+2023-10-14 16:34:40,268 [main] Generating unique operation named: saveUsingPOST_10
+2023-10-14 16:34:40,269 [main] Generating unique operation named: updateByIdUsingPUT_6
+2023-10-14 16:34:40,282 [main] Generating unique operation named: commitReportUsingPUT_1
+2023-10-14 16:34:40,283 [main] Generating unique operation named: getByIdUsingGET_10
+2023-10-14 16:34:40,286 [main] Generating unique operation named: getCheckReportPageUsingGET_1
+2023-10-14 16:34:40,287 [main] Generating unique operation named: removeByIdUsingDELETE_11
+2023-10-14 16:34:40,288 [main] Generating unique operation named: saveUsingPOST_11
+2023-10-14 16:34:40,290 [main] Generating unique operation named: updateByIdUsingPUT_7
+2023-10-14 16:34:40,308 [main] Generating unique operation named: getCommitReportUsingGET_1
+2023-10-14 16:34:40,319 [main] Generating unique operation named: removeByIdUsingDELETE_12
+2023-10-14 16:34:40,331 [main] Generating unique operation named: updateByIdUsingPUT_8
+2023-10-14 16:34:40,332 [main] Generating unique operation named: updateByIdUsingPUT_9
+2023-10-14 16:34:40,383 [main] Generating unique operation named: removeByIdUsingDELETE_13
+2023-10-14 16:34:40,386 [main] Generating unique operation named: saveUsingPOST_12
+2023-10-14 16:34:40,392 [main] Generating unique operation named: updateByIdUsingPUT_10
+2023-10-14 16:34:40,400 [main] Generating unique operation named: getByIdUsingGET_11
+2023-10-14 16:34:40,411 [main] Generating unique operation named: removeByIdUsingDELETE_14
+2023-10-14 16:34:40,414 [main] Generating unique operation named: saveUsingPOST_13
+2023-10-14 16:34:40,416 [main] Generating unique operation named: updateByIdUsingPUT_11
+2023-10-14 16:34:40,421 [main] Generating unique operation named: getByIdUsingGET_12
+2023-10-14 16:34:40,425 [main] Generating unique operation named: removeByIdUsingDELETE_15
+2023-10-14 16:34:40,431 [main] Generating unique operation named: updateByIdUsingPUT_12
+2023-10-14 16:34:40,434 [main] Generating unique operation named: listUsingGET_2
+2023-10-14 16:34:40,437 [main] Generating unique operation named: saveUsingPUT_1
+2023-10-14 16:34:40,441 [main] Generating unique operation named: getByIdUsingGET_13
+2023-10-14 16:34:40,457 [main] Generating unique operation named: removeByIdUsingDELETE_16
+2023-10-14 16:34:40,461 [main] Generating unique operation named: saveUsingPOST_14
+2023-10-14 16:34:40,464 [main] Generating unique operation named: updateByIdUsingPUT_13
+2023-10-14 16:34:40,467 [main] Generating unique operation named: getByIdUsingGET_14
+2023-10-14 16:34:40,475 [main] Generating unique operation named: removeByIdUsingDELETE_17
+2023-10-14 16:34:40,480 [main] Generating unique operation named: saveUsingPOST_15
+2023-10-14 16:34:40,483 [main] Generating unique operation named: updateByIdUsingPUT_14
+2023-10-14 16:34:40,486 [main] Generating unique operation named: getByIdUsingGET_15
+2023-10-14 16:34:40,487 [main] Generating unique operation named: getSitePageUsingGET_1
+2023-10-14 16:34:40,491 [main] Generating unique operation named: saveUsingPOST_16
+2023-10-14 16:34:40,494 [main] Generating unique operation named: getByIdUsingGET_16
+2023-10-14 16:34:40,504 [main] Generating unique operation named: removeByIdUsingDELETE_18
+2023-10-14 16:34:40,508 [main] Generating unique operation named: saveUsingPOST_17
+2023-10-14 16:34:40,513 [main] Generating unique operation named: updateByIdUsingPUT_15
+2023-10-14 16:34:40,548 [main] Started CheckGroupCriteriaTest in 14.687 seconds (JVM running for 16.039)
+2023-10-14 16:34:40,819 [main] HikariPool-1 - Starting...
+2023-10-14 16:34:41,762 [main] HikariPool-1 - Start completed.
+2023-10-14 16:34:41,917 [SpringContextShutdownHook] Shutting down ExecutorService 'taskScheduler'
+2023-10-14 16:34:41,919 [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2023-10-14 16:34:41,957 [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-10-14 16:34:42,358 [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.

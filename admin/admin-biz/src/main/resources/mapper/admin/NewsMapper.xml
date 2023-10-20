@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.admin.mapper.NewsMapper">
+
+  <resultMap id="newsMap" type="cn.swust.indigo.admin.entity.po.News">
+                  <id column="news_id" property="newsId" />
+                        <id column="news_id" property="newsId" />
+                        <result column="news_name" property="newsName"/>
+                        <result column="status" property="status"/>
+                        <result column="news_type" property="newsType"/>
+                        <result column="publish_time" property="publishTime"/>
+                        <result column="creator_id" property="creatorId"/>
+                        <result column="approve_num" property="approveNum"/>
+                        <result column="create_time" property="createTime"/>
+                        <result column="read_num" property="readNum"/>
+                        <result column="update_time" property="updateTime"/>
+            </resultMap>
+</mapper>

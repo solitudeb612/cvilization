@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <!--    控制版本信息，springboot的父依赖，当前项目就是Spring Boot项目
+        spring-boot-starter-parent 是一个特殊的starter，用来提供相关的Maven默认依赖-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+<!--        <version>2.5.6</version>-->
+        <version>2.3.1.RELEASE</version>
+    </parent>
+
+    <groupId>cn.swust.indigo</groupId>
+    <artifactId>myce</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>myce</name>
+    <description>西南科技大学计-绵阳市宣传部文明办</description>
+
+    <!--    版本-->
+    <properties>
+        <java.version>1.8</java.version>
+        <swagger.version>2.9.2</swagger.version>
+        <springboot.version>2.3.1.RELEASE</springboot.version>
+    </properties>
+
+    <!--    模块-->
+    <modules>
+        <module>common</module>
+        <module>admin</module>
+        <module>my-civ-eva</module>
+        <module>codegen</module>
+    </modules>
+
+    <!--    从相应的库地址下载项目依赖的库文件-->
+    <repositories>
+
+
+
+
+        <repository>
+            <id>ali-plugin</id>
+            <name>ali-plugin</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <!--    pluginRepositories中的repository是以pluginRepository表示的，
+    它表示插件从什么库地址下载-->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>ali-plugin</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--            1、支持Redis键值存储数据库，包括spring-redis-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <!--            2、支持Spring的Cache抽象，统一不同的缓存注解以降低数据库压力，
+                            提升整个系统的相应效率和并发量-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-cache</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <!--            3、springboot整合quartz实现定时任务持久化到数据库，并配置quartz的集群功能
+                               https://www.jianshu.com/p/dc814e8014b0-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-quartz</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <!--            4、支持spring-security,主要面向Web应用安全，为Web提供基本安全防护-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <!--            5、支持全栈式Web开发，自动引入web模块开发需要的相关jar包，
+                            包括Tomcat和Spring-webmvc-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <!--            6、支持WebSocket开发，实现浏览器与服务器的全双工通信，扩展通信功能，使服务端能主动向客户端发送数据
+                 ？？？？    像spring-boot-starter-websocket就引入了spring-boot-starter-web和spring-boot-starter，所以不要重复引入。
+                            https://www.cnblogs.com/syncmr/p/10768366.html-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-websocket</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <!--            7、SpringBoot的核心启动器，包含自动配置，日志和yaml-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>2.1.3</version>
+            </dependency>
+            <!--            8、使用spring-boot-devtools完成热部署，修改代码之后，无需重新启动服务器就可以加载更新的代码
+                             https://blog.csdn.net/jintingbo/article/details/82314355-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <version>${springboot.version}</version>
+                <scope>runtime</scope>
+                <optional>true</optional>
+            </dependency>
+            <!--            10、引入json包，json作为轻量级的数据交换格式，便于前后端数据交换
+                            https://www.cnblogs.com/jingmoxukong/p/10200916.html-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-json</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <!--            9、java连接mysql的驱动包，否则JDBC无法访问数据库
+                            https://blog.csdn.net/Ricky_Monarch/article/details/99672787-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.22</version>
+            </dependency>
+            <!--测试依赖-->
+            <!--            11、单元测试使用-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${springboot.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <!--                    junit-vintage-engine 是在 JUnit Platform 上运行 JUnit 3 和 JUnit 4 测试的测试引擎-->
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!--            12、在有安全验证的情况下做单元测试Test-->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-test</artifactId>
+                <version>5.3.3.RELEASE</version>
+                <scope>test</scope>
+            </dependency>
+            <!--            13、完成自动化配置
+                            https://segmentfault.com/a/1190000011433487-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <!--            14.spring-web提供了核心HTTP集成，包括一些便捷的servlet过滤器等，用于集成web框架的基础-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>5.2.6.RELEASE</version>
+            </dependency>
+
+            <!--            19、mybatis-plus 数据操作-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.2.0</version>
+            </dependency>
+
+            <!--            20、API框架swagger2
+                            https://www.cnblogs.com/yichunguo/p/12665857.html-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <!--            21、使用@Import(BeanValidatorPluginsConfiguration.class)，在文档中加入相关约束
+                            https://blog.csdn.net/luxinghong199106/article/details/86683158-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-bean-validators</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <!--            22、接口文档生成与查看-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <!--            23、处理事务和AOP所需的包，支持AOP相关注解等
+                            https://baijiahao.baidu.com/s?id=1613310315603029991&wfr=spider&for=pc-->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>1.9.4</version>
+            </dependency>
+            <!--            24、javaee-web-api应该支持JavaEEWeb配置文件，？
+                            -->
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>7.0</version>
+            </dependency>
+            <!--            25、在接口开发是对参数进行校验
+                            https://www.jianshu.com/p/6e843e6b25d6-->
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>2.0.2</version>
+            </dependency>
+            <!--            26、spring默认使用yml中的配置，但有时候要用传统的xml或properties配置，就需要使用这个依赖
+                            https://blog.csdn.net/yuhan_0590/article/details/85100246-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <optional>true</optional>
+                <version>2.3.1.RELEASE</version>
+            </dependency>
+            <!--            27、简化实体层代码-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.8</version>
+                <scope>provided</scope>
+                <optional>true</optional>
+            </dependency>
+            <!--            28、基础工具类，一个Java基础工具类，对文件、流、加密解密、转码、正则、线程等
+                            https://blog.csdn.net/moshowgame/article/details/80087954-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.0.7</version>
+            </dependency>
+            <!--            29、工具类
+                            https://www.jianshu.com/p/1886903ed14c-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.9</version>
+            </dependency>
+            <!--            30、用于对JSON格式的数据进行解析和打包
+                            https://www.runoob.com/w3cnote/fastjson-intro.html-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.68</version>
+            </dependency>
+            <!--            31、使用来处理中文转换成拼音（汉语拼音，罗马拼音等），功能强大-->
+            <dependency>
+                <groupId>com.belerweb</groupId>
+                <artifactId>pinyin4j</artifactId>
+                <version>2.5.0</version>
+            </dependency>
+            <!--            32、数据绑定包，其中重要的一个功能是可以将JSON格式的数据转化为类对象
+                            https://blog.csdn.net/u011499747/article/details/78762007-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.11.0</version>
+            </dependency>
+            <!--            33、利用jsr310解决数据库日期型，java时间戳转换问题
+                            https://www.cnblogs.com/deolin/p/7812894.html-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>2.11.0</version>
+            </dependency>
+            <!--            34、对象存储，灵活方便，结合java 实现minio 文件上传
+                            https://www.jianshu.com/p/68ac0477291d-->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>6.0.8</version>
+            </dependency>
+            <!--            33、支持切入点表达式 （AOP）https://www.jianshu.com/p/、
+               依赖23 ？？？ https://www.cnblogs.com/Peter-Yu/p/11604969.htmlcee46af5abb8，
+                            https://www.jianshu.com/p/3c5b09f6f563-->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>1.9.5</version>
+            </dependency>
+            <!--            34、项目内部common-core-->
+            <dependency>
+                <groupId>cn.swust.indigo</groupId>
+                <artifactId>common-core</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <!--           37、项目内部codegen-->
+            <dependency>
+                <groupId>cn.swust.indigo</groupId>
+                <artifactId>codegen</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <!--            38、项目内部common-minio-->
+            <dependency>
+                <groupId>cn.swust.indigo</groupId>
+                <artifactId>common-minio</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <!--            41、项目内部admin-api-->
+            <dependency>
+                <groupId>cn.swust.indigo</groupId>
+                <artifactId>admin-api</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.swust.indigo</groupId>
+                <artifactId>admin-biz</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <!--            45、项目内部pa-entity-->
+            <dependency>
+                <groupId>cn.swust.indigo</groupId>
+                <artifactId>my-civ-eva</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-core</artifactId>
+                <version>3.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>3.2.0</version>
+
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>5.7.1</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.stuxuhai</groupId>
+                <artifactId>jpinyin</artifactId>
+                <version>1.1.8</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-parser</artifactId>
+                <version>1.0.35</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.swagger2markup</groupId>
+                <artifactId>swagger2markup</artifactId>
+                <version>1.3.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.30</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>1.7</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-configuration</groupId>
+                <artifactId>commons-configuration</artifactId>
+                <version>1.10</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>5.3.6.Final</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <dependencies>
+        <!--参考20、
+                    https://www.cnblogs.com/getupmorning/p/7267076.html-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!--基础工具类-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+        <!--commons-->
+        <!--参考27-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <!--参考28-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+</project>

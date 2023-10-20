@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.CommitReportMapper">
+    <resultMap id="commitRuleMap" type="cn.swust.indigo.mce.entity.vo.CommitRuleTableInfo">
+        <result column="department_id" property="departmentId"/>
+        <result column="rule_id" property="ruleId"/>
+        <result column="commitCount" property="commitCount"/>
+        <result column="lastCommitTime" property="lastCommitTime"/>
+        <result column="report_id" property="reportId"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <select id="getCommitReportCount" resultMap="commitRuleMap">
+        select count(*) as commitCount, max(commit_time) as lastCommitTime, rule_id, department_id, report_id, status
+        from commit_report
+        where department_id in (select dept_id from sys_dept where leader_id = #{userId})
+          and guide_id = #{guideId}
+        group by rule_id, department_id
+    </select>
+
+    <select id="findCount" resultType="cn.swust.indigo.mce.entity.po.CommitReportVo1">
+        select count(*) AS count,MAX(commit_time) AS commitTime,rule_id
+        as ruleId,department_id as departmentId
+        FROM commit_report
+        where guide_id = #{guideId}
+        <if test="departmentId != null">
+            department_id in(select rdt.department_id from
+            rule_dept_task rdt where rdt.rule_id in(select rule_id from rule_dept_task
+            where root_rule_id = #{guideId} and lead_flag = 0
+            and department_id = #{departmentId}) AND lead_flag = 1)
+        </if>
+        GROUP BY rule_id,department_id
+    </select>
+
+    <select id="getTotalReportCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM commit_report
+    </select>
+
+    <select id="getYearTimeAndCount" resultType="cn.swust.indigo.mce.entity.po.DataTimeAndCount">
+        SELECT DATE_FORMAT(cr.commit_time, '%Y-%m') AS time,
+               count(*)                             AS count
+        FROM commit_report cr
+        WHERE cr.commit_time > DATE_SUB(now(), INTERVAL 12 MONTH)
+        GROUP BY time DESC
+    </select>
+
+</mapper>

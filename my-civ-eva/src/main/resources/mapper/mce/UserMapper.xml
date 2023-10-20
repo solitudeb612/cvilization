@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.swust.indigo.mce.mapper.UserMapper">
+    <resultMap id="sysUserResultMap" type="cn.swust.indigo.admin.entity.po.SysUser">
+        <id column="user_id" property="userId"/>
+        <result column="username" property="username"/>
+        <result column="nickname" property="nickname"/>
+        <result column="phone" property="phone"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="wx_open_id" property="wxOpenId"/>
+        <result column="sex" property="sex"/>
+        <result column="email" property="email"/>
+        <result column="department_name" property="departmentName"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+
+    <insert id="insertUser">
+        insert into sys_user
+            (username,password,nickname,phone,email,birthday,sex,memo,department_id,user_py,status)
+            values(#{username},#{password},#{nickname},#{phone},#{email},#{birthday},#{sex}
+            ,#{memo},#{departmentId},#{userPy},0);
+    </insert>
+        <insert id="insertSysUserRole">
+        insert into sys_user_role
+            (user_id,role_id)
+        values(#{userId},#{roleId})
+    </insert>
+    <update id="updateByUserIdsAndStatus">
+        update sys_user set status = #{status}
+        <where>
+                 user_id IN
+                <foreach item="item" index="index" collection="userIds" open="("  close=")" separator=",">
+                    #{item}
+                </foreach>
+        </where>
+    </update>
+    <select id="findMyUserAll" resultMap="sysUserResultMap">
+        select  sysUser.user_id,sysUser.username,sysUser.nickname,sysUser.phone,sysUser.department_id,
+                sysUser.create_time,sysUSer.update_time,sysUser.wx_open_id,sysUser.sex,sysUser.email,
+                sysDept.department_name from sys_user sysUser left join sys_dept sysDept on
+            sysUser.department_id = SysDept.dept_id where sysUser.status = #{status} and sysUser.department_id = sysDept.dept_id and department_id in (select dept_id from sys_dept where leader_id = #{leaderId});
+    </select>
+    <select id="getSiteIdAndName" resultType="cn.swust.indigo.mce.entity.vo.Site">
+        select site_id as siteId,name as siteName from site where leader_id = #{leaderId};
+    </select>
+    <select id="getDepartmentIdAndName" resultType="cn.swust.indigo.mce.entity.vo.Department">
+        select dept_id as departmentId,department_name as departmentName
+        from sys_dept where leader_id = #{leaderId}
+    </select>
+</mapper>

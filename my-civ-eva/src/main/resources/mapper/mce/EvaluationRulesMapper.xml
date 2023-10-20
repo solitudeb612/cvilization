@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.EvaluationRulesMapper">
+    <resultMap id="evaluationRulesMap" type="cn.swust.indigo.mce.entity.po.EvaluationRules">
+        <id property="ruleId" column="rule_id"/>
+        <result property="rootRuleId" column="root_rule_id"/>
+        <result property="fullMarks" column="full_marks"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="ruleName" column="rule_name"/>
+        <result property="rulePy" column="rule_py"/>
+        <result property="sort" column="sort"/>
+        <result property="submit" column="submit"/>
+        <result property="veto" column="veto"/>
+    </resultMap>
+    <resultMap id="allRuleInfo" type="cn.swust.indigo.mce.entity.vo.CommitRuleTableInfo">
+        <result column="ruleId" property="ruleId"/>
+        <result column="ruleLevel1Name" property="ruleLevel1Name"/>
+        <result column="ruleLevel2Name" property="ruleLevel2Name"/>
+        <result column="ruleLevel3Name" property="ruleLevel3Name"/>
+        <result column="ruleLevel4Name" property="ruleLevel4Name"/>
+    </resultMap>
+    <resultMap id="tableRuleInfo" type="cn.swust.indigo.mce.entity.vo.QEvaluationTableInfo">
+        <result column="ruleLevel1Id" property="ruleLevel1Id"/>
+        <result column="ruleLevel1Name" property="ruleLevel1Name"/>
+        <result column="ruleLevel2Id" property="ruleLevel2Id"/>
+        <result column="ruleLevel2Name" property="ruleLevel2Name"/>
+        <result column="ruleLevel3Id" property="ruleLevel3Id"/>
+        <result column="ruleLevel3Name" property="ruleLevel3Name"/>
+        <result column="ruleLevel4Id" property="ruleLevel4Id"/>
+        <result column="ruleLevel4Name" property="ruleLevel4Name"/>
+    </resultMap>
+
+
+    
+    
+<!--    <select id="getAllRuleInfo" resultMap="allRuleInfo">-->
+<!--        select-->
+<!--        e4.rule_id,-->
+<!--        e4.rule_name as ruleLevel4Name,-->
+<!--        e3.rule_name as ruleLevel3Name,-->
+<!--        e2.rule_name as ruleLevel2Name,-->
+<!--        e1.rule_name as ruleLevel1Name-->
+<!--        from-->
+<!--        evaluation_rules e4-->
+<!--        left join evaluation_rules e3 on e4.parent_id = e3.rule_id-->
+<!--        left join evaluation_rules e2 on e4.parent_id = e2.rule_id-->
+<!--        left join evaluation_rules e1 on e3.parent_id = e1.rule_id-->
+<!--        where e4.rule_id in-->
+<!--        <foreach collection="list" index="index" item="id" open="(" separator="," close=")">-->
+<!--            #{id}-->
+<!--        </foreach>-->
+<!--        order by e1.sort, e2.sort, e3.sort, e4.sort, e4.rule_id-->
+<!--    </select>-->
+
+    <select id="getAllRuleInfo" resultType="cn.swust.indigo.mce.entity.vo.CommitRuleTableInfo">
+        SELECT
+        e4.rule_id AS ruleId,
+        e4.rule_name AS ruleLevel4Name,
+        e3.rule_name AS ruleLevel3Name,
+        e2.rule_name AS ruleLevel2Name,
+        e1.rule_name AS ruleLevel1Name
+        FROM
+        evaluation_rules e4
+        INNER JOIN evaluation_rules e3 ON e4.parent_id = e3.rule_id
+        INNER JOIN evaluation_rules e2 ON e3.parent_id = e2.rule_id
+        INNER JOIN evaluation_rules e1 ON e2.parent_id = e1.rule_id
+        WHERE
+        e1.rule_id NOT IN ( SELECT root_rule_id FROM evaluation )
+        AND
+        e4.rule_id IN
+        <foreach collection="list" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        ORDER BY
+        e4.rule_id,
+        e3.rule_id,
+        e2.rule_id,
+        e1.rule_id;
+    </select>
+
+
+    <select id="tableAllRuleInfo" resultMap="tableRuleInfo">
+        SELECT e1.rule_id   as ruleLevel1Id,
+               e1.rule_name as ruleLevel1Name,
+               e2.rule_id   as ruleLevel2Id,
+               e2.rule_name as ruleLevel2Name,
+               e3.rule_id   as ruleLevel3Id,
+               e3.rule_name as ruleLevel3Name,
+               e4.rule_id   as ruleLevel4Id,
+               e4.rule_name as ruleLevel4Name
+        FROM evaluation_rules e1
+                 LEFT JOIN evaluation_rules e2 on e1.rule_id = e2.parent_id
+                 LEFT JOIN evaluation_rules e3 on e2.rule_id = e3.parent_id
+                 LEFT JOIN evaluation_rules e4 on e3.rule_id = e4.parent_id
+        where e4.root_rule_id = #{rootRuleId}
+    </select>
+    <select id="listAllInfoRules" resultMap="tableRuleInfo">
+        SELECT all e1.rule_id as ruleLevel1Id,
+        e1.rule_name as ruleLevel1Name,
+        e2.rule_id as ruleLevel2Id,
+        e2.rule_name as ruleLevel2Name,
+        e3.rule_id as ruleLevel3Id,
+        e3.rule_name as ruleLevel3Name,
+        e4.rule_id as ruleLevel4Id,
+        e4.rule_name as ruleLevel4Name
+        FROM evaluation_rules e1
+        LEFT JOIN evaluation_rules e2 on e1.rule_id = e2.parent_id
+        LEFT JOIN evaluation_rules e3 on e2.rule_id = e3.parent_id
+        LEFT JOIN evaluation_rules e4 on e3.rule_id = e4.parent_id
+        where e4.root_rule_id = #{rootRuleId} AND
+        e4.rule_id in
+        <foreach collection="list" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.GuideMapper">
+    <resultMap id="guideMap" type="cn.swust.indigo.mce.entity.po.Guide">
+        <id column="guide_id" property="guideId"/>
+        <result column="guide_name" property="guideName"/>
+        <result column="guide_type" property="guideType"/>
+        <result column="creator_id" property="creatorId"/>
+        <result column="begin_time" property="beginTime"/>
+        <result column="material_ids" property="materialIds"/>
+        <result column="end_time" property="endTime"/>
+        <result column="memo" property="memo"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="updater_id" property="updaterId"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="root_rule_id" property="rootRuleId"/>
+    </resultMap>
+
+
+    <select id="monthTotalCount" resultType="cn.swust.indigo.mce.entity.vo.GuidePerCount">
+        SELECT
+            DATE_FORMAT( g.create_time, '%Y-%m' ) AS time,
+            count(*) AS totalCount
+        FROM
+            guide g
+        WHERE
+            g.create_time > DATE_SUB( now(), INTERVAL 12 MONTH )
+        GROUP BY
+            time DESC
+    </select>
+    <select id="monthPublishCount" resultType="cn.swust.indigo.mce.entity.vo.GuidePerCount">
+        SELECT
+            DATE_FORMAT( g.create_time, '%Y-%m' ) AS time,
+            count(*) AS publishCount
+        FROM
+            guide g
+        WHERE
+            g.`status` >= 2
+          AND g.create_time > DATE_SUB( now(), INTERVAL 12 MONTH )
+        GROUP BY
+            time DESC
+    </select>
+    <select id="yearTotalCount" resultType="cn.swust.indigo.mce.entity.vo.GuidePerCount">
+        SELECT
+            DATE_FORMAT( g.create_time, '%Y' ) AS time,
+            count(*) AS totalCount
+        FROM
+            guide g
+        WHERE
+            g.create_time > DATE_SUB( now(), INTERVAL 12 MONTH )
+        GROUP BY
+            time DESC
+    </select>
+    <select id="yearPublishCount" resultType="cn.swust.indigo.mce.entity.vo.GuidePerCount">
+        SELECT
+            DATE_FORMAT( g.create_time, '%Y' ) AS time,
+            count(*) AS publishCount
+        FROM
+            guide g
+        WHERE
+            g.`status` >= 2
+          AND g.create_time > DATE_SUB( now(), INTERVAL 12 MONTH )
+        GROUP BY
+            time DESC
+    </select>
+
+
+</mapper>

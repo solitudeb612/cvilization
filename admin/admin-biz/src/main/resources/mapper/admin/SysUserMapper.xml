@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.swust.indigo.admin.mapper.SysUserMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="baseResultMap" type="cn.swust.indigo.admin.entity.vo.UserVO">
+        <id column="user_id" property="userId"/>
+        <result column="username" property="username"/>
+        <result column="nickname" property="nickname"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="email" property="email"/>
+        <result column="sex" property="sex"/>
+        <collection property="roleList" ofType="cn.swust.indigo.admin.entity.po.SysRole"
+                    select="cn.swust.indigo.admin.mapper.SysRoleMapper.listRolesByUserId" column="user_id">
+        </collection>
+    </resultMap>
+
+    <!-- userVo结果集 -->
+    <resultMap id="userVoResultMap" type="cn.swust.indigo.admin.entity.vo.UserVO">
+        <id column="user_id" property="userId"/>
+        <result column="username" property="username"/>
+        <result column="nickname" property="nickname"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="wx_open_id" property="wxOpenId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="deptId" property="departmentId"/>
+        <result column="deptName" property="deptName"/>
+        <result column="email" property="email"/>
+        <result column="sex" property="sex"/>
+        <collection property="roleList" ofType="cn.swust.indigo.admin.entity.po.SysRole">
+            <id column="role_id" property="roleId"/>
+            <result column="role_name" property="roleName"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="sysUserResultMap" type="cn.swust.indigo.admin.entity.po.SysUser">
+        <id column="user_id" property="userId"/>
+        <result column="username" property="username"/>
+        <result column="nickname" property="nickname"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="wx_open_id" property="wxOpenId"/>
+        <result column="sex" property="sex"/>
+        <result column="email" property="email"/>
+        <result column="department_name" property="departmentName"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+
+    <sql id="userRoleSql">
+		`user`.user_id,
+		`user`.username,
+		`user`.nickname,
+		`user`.`password`,
+		`user`.phone,
+		`user`.wx_open_id,
+		`user`.department_id,
+		`user`.create_time AS create_time,
+		`user`.update_time AS update_time,
+		`user`.status AS status,
+		r.role_id,
+		r.role_name as role_name
+	</sql>
+
+    <sql id="userRoleDeptSql">
+		`user`.user_id,
+		`user`.username,
+		`user`.nickname,
+		`user`.`password`,
+		`user`.phone,
+		`user`.wx_open_id,
+		`user`.create_time  ,
+		`user`.update_time  ,
+		`user`.status AS status,
+		r.role_id,
+		r.role_name,
+		d.department_name AS deptName,
+		d.dept_id AS deptId
+    </sql>
+
+    <select id="getUserVoByUsername" resultMap="userVoResultMap">
+        SELECT
+        <include refid="userRoleDeptSql"/>
+        FROM
+        sys_user AS `user`
+        LEFT JOIN sys_user_role AS ur ON ur.user_id = `user`.user_id
+        LEFT JOIN sys_role AS r ON r.role_id = ur.role_id
+        LEFT JOIN sys_dept AS d ON d.dept_id = `user`.department_id
+        WHERE `user`.username = #{username}
+    </select>
+
+    <select id="getUserVoByWxOpenId" resultMap="userVoResultMap">
+        SELECT
+        <include refid="userRoleDeptSql"/>
+        FROM
+        sys_user AS `user`
+        LEFT JOIN sys_user_role AS ur ON ur.user_id = `user`.user_id
+        LEFT JOIN sys_role AS r ON r.role_id = ur.role_id
+        LEFT JOIN sys_dept AS d ON d.dept_id = `user`.department_id
+        WHERE `user`.wx_open_id = #{wxOpenId}
+    </select>
+
+    <select id="getUserVoById" resultMap="userVoResultMap">
+        SELECT
+            `user`.user_id,
+            `user`.username,
+            `user`.nickname,
+            `user`.`password`,
+            `user`.phone,
+            `user`.wx_open_id,
+            `user`.create_time  ,
+            `user`.update_time  ,
+            `user`.status AS status,
+            `user`.sex,
+            `user`.email,
+            r.role_id,
+            r.role_name,
+            d.department_name AS deptName,
+            d.dept_id AS deptId
+        FROM
+        sys_user AS `user`
+        LEFT JOIN sys_user_role AS ur ON ur.user_id = `user`.user_id
+        LEFT JOIN sys_role AS r ON r.role_id = ur.role_id
+        LEFT JOIN sys_dept AS d ON d.dept_id = `user`.department_id
+        WHERE
+        `user`.user_id = #{id}
+    </select>
+
+    <select id="getUserVosPage" resultMap="baseResultMap">
+        SELECT
+        `user`.user_id,
+        `user`.username,
+        `user`.nickname,
+        `user`.status,
+        `user`.`password`,
+        `user`.phone,
+        `user`.wx_open_id,
+        `user`.email,
+        `user`.sex,
+        `user`.department_id AS deptId,
+        `user`.create_time AS ucreate_time,
+        `user`.update_time AS uupdate_time,
+        d.department_name AS deptName
+        FROM
+        sys_user AS `user`
+        LEFT JOIN sys_dept AS d ON d.dept_id = `user`.department_id
+        <where>
+            <if test="query.username != null and query.username != ''">
+                and `user`.username LIKE CONCAT('%',#{query.username},'%')
+            </if>
+            <if test="query.nickname != null and query.nickname != ''">
+                and `user`.nickname LIKE CONCAT('%',#{query.nickname},'%')
+            </if>
+            <if test="query.deptId != null and query.deptId != ''">
+                and `user`.department_id = #{query.deptId}
+            </if>
+            <if test="query.status != null and query.status != ''">
+                and `user`.status = #{status}
+            </if>
+            <if test="query.telephone != null and query.telephone != ''">
+                and `user`.telephone LIKE CONCAT('%',#{query.telephone},'%')
+            </if>
+            <if test="query.phone != null and query.phone != ''">
+                and `user`.phone LIKE CONCAT('%',#{query.phone},'%')
+            </if>
+        </where>
+        ORDER BY `user`.create_time DESC
+        <if test="current >= 0">
+            limit #{beforeSize}, #{current}
+        </if>
+    </select>
+
+
+    <select id="getUserVosList" resultMap="baseResultMap">
+        SELECT
+        `user`.user_id,
+        `user`.username,
+        `user`.nickname,
+        `user`.`password`,
+        `user`.phone,
+        `user`.wx_open_id,
+        `user`.email,
+        `user`.sex,
+        `user`.department_id AS deptId,
+        `user`.create_time ,
+        `user`.update_time ,
+        `user`.status AS status,
+        d.department_name AS deptName
+        FROM
+        sys_user AS `user`
+        LEFT JOIN sys_dept AS d ON d.dept_id = `user`.department_id
+        <where>
+            <if test="query.username != null and query.username != ''">
+                and `user`.username LIKE CONCAT('%',#{query.username},'%')
+            </if>
+            <if test="query.nickname != null and query.nickname != ''">
+                and `user`.nickname LIKE CONCAT('%',#{query.nickname},'%')
+            </if>
+            <if test="query.deptId != null and query.deptId != ''">
+                and `user`.department_id = #{query.deptId}
+            </if>
+            <if test="query.status != null and query.status != ''">
+                and `user`.status = #{query.status}
+            </if>
+        </where>
+        ORDER BY `user`.create_time DESC
+    </select>
+
+    <select id="findSysUserByUserName" resultMap="sysUserResultMap">
+        select  sysUser.user_id,sysUser.username,sysUser.nickname,sysUser.`password`,sysUser.phone,sysUser.department_id,
+                sysUser.create_time,sysUSer.update_time,sysUser.`status`,sysUser.wx_open_id,sysUser.sex,sysUser.email,
+                sysDept.department_name from sys_user sysUser left join sys_dept sysDept on
+            sysUser.department_id = SysDept.dept_id where sysUser.username = #{username}
+    </select>
+    <select id="selectTotal" resultType="java.lang.Integer">
+            SELECT
+            count(`user`.user_id)
+            FROM
+            sys_user AS `user`
+            LEFT JOIN sys_dept AS d ON d.dept_id = `user`.department_id
+            <where>
+                <if test="query.username != null and query.username != ''">
+                    and `user`.username LIKE CONCAT('%',#{query.username},'%')
+                </if>
+                <if test="query.nickname != null and query.nickname != ''">
+                    and `user`.nickname LIKE CONCAT('%',#{query.nickname},'%')
+                </if>
+                <if test="query.deptId != null and query.deptId != ''">
+                    and `user`.department_id = #{query.deptId}
+                </if>
+                <if test="query.status != null and query.status != ''">
+                    and `user`.status = #{status}
+                </if>
+            </where>
+        </select>
+    <select id="getNotLeaderUser" resultMap="baseResultMap">
+        SELECT
+        `user`.user_id,
+        `user`.username,
+        `user`.nickname,
+        `user`.status,
+        `user`.`password`,
+        `user`.phone,
+        `user`.wx_open_id,
+        `user`.email,
+        `user`.sex,
+        `user`.department_id AS deptId,
+        `user`.create_time AS ucreate_time,
+        `user`.update_time AS uupdate_time,
+        d.department_name AS deptName
+        FROM
+        sys_user AS `user`
+        LEFT JOIN sys_dept AS d ON d.dept_id = `user`.department_id
+        WHERE `user`.user_id NOT IN (SELECT sd.leader_id FROM sys_dept sd GROUP BY sd.leader_id)
+        ORDER BY `user`.create_time DESC
+        <if test="current >= 0">
+            limit #{beforeSize}, #{current}
+        </if>
+    </select>
+
+</mapper>

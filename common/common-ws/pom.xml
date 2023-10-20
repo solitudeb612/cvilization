@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>cn.swust.indigo</groupId>
+        <artifactId>common</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <groupId>cn.swust.indigo</groupId>
+    <artifactId>spdp.common-ws</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>common-ws</name>
+    <description>websocket</description>
+    <dependencies>
+
+        <!--        1、针对Java servlet规范进行编译所必需的-->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+        </dependency>
+        <!--        2、支持WebSocket开发，实现浏览器与服务器的全双工通信，扩展通信功能，使服务端能主动向客户端发送数据
+                        顺便说一句，springboot的高级组件会自动引用基础的组件，
+                        像spring-boot-starter-websocket就引入了spring-boot-starter-web和spring-boot-starter，所以不要重复引入-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.belerweb</groupId>
+            <artifactId>pinyin4j</artifactId>
+        </dependency>
+    </dependencies>
+</project>

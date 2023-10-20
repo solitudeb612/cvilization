@@ -1,0 +1,35 @@
+package ${package}.${moduleName}.vo;
+
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModel;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
+
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
+@Data
+@ApiModel(value = " ")
+public class Q${className} {
+
+#foreach ($column in $columns)
+/**
+    * $column.comments
+    */
+    #if($column.size != 0)
+@Size(max = $column.size, message = "$column.comments 最大为$column.size")
+    #end
+@ApiModelProperty(value="$column.comments"#if($column.hidden),hidden=$column.hidden#end)
+    private $column.attrType $column.lowerAttrName;
+
+    #if($column.attrType == "LocalDateTime")
+    /**
+     * $column.comments结束
+     */#set($endTime = $column.lowerAttrName+"End")
+    @ApiModelProperty(value="$column.comments结束 #if($column.size != 0)长度 1-$column.size#end"#if($column.hidden),hidden=$column.hidden#end)
+    private $column.attrType $endTime;
+    #end
+#end
+}

@@ -1,0 +1,19 @@
+# 使用说明 V3.2.0
+# 1. 使用docker-compose  宿主机不需要配置host来发现
+# 2. 无需修改源码，根目录  docker-compose up 即可
+# 3. 静静等待服务启动
+
+version: '2'
+services:
+  tennis-match:
+    build:
+      context: ./
+      dockerfile: ./my-civ-eva/Dockerfile
+    restart: always
+    network_mode: "host"
+    container_name: my-civ-eva
+    image: my-civ-eva
+    ports:
+    - 8022:8022
+    volumes:
+    - /my-civ-eva/logs:/my-civ-eva/logs

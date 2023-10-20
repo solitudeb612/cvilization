@@ -1,0 +1,48 @@
+package ${package}.${moduleName}.entity;
+
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Data
+@TableName("${tableName}")
+
+@ApiModel(value = "${comments}")
+public class ${className} {
+private static final long serialVersionUID = 1L;
+    #foreach ($column in $columns)
+
+    /**
+     * $column.comments
+     */
+    #if($column.columnName == $pk.columnName)
+@TableId
+    #end
+    #if($column.nullable)
+@NotNull
+    #end
+    #if($column.size != 0)
+@Size(min = 1,max = $column.size, message = "$column.comments 最大为$column.size")
+    #end
+@ApiModelProperty(value="$column.comments#if($column.size != 0) 长度: 1-$column.size#end"#if($column.hidden),hidden=$column.hidden#end)
+    private $column.attrType $column.lowerAttrName;
+    #end
+
+}

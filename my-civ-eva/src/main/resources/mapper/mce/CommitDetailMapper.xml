@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.CommitDetailMapper">
+
+    <resultMap id="projectCommitMap" type="cn.swust.indigo.mce.entity.po.CommitDetail">
+        <id column="project_commit_id" property="projectCommitId"/>
+        <result column="project_id" property="projectId"/>
+        <result column="guide_commit_id" property="guideCommitId"/>
+        <result column="name" property="name"/>
+        <result column="file_id" property="fileId"/>
+        <result column="type" property="type"/>
+        <result column="address" property="address"/>
+        <result column="commit_device" property="commitDevice"/>
+        <result column="creator_id" property="creatorId"/>
+        <result column="commit_time" property="commitTime"/>
+    </resultMap>
+
+
+    <select id="getReportIds" resultType="java.lang.Integer">
+        SELECT DISTINCT b.report_id
+        FROM commit_detail b
+        WHERE b.task_id = (SELECT a.task_id
+                           FROM rule_dept_task a
+                           WHERE a.guide_id = #{guideId}
+                             AND a.rule_id = #{ruleId}
+                             AND a.department_id = #{departmentId}
+                           LIMIT 1);
+    </select>
+
+    <select id="selectLeadDept" resultType="cn.swust.indigo.mce.entity.vo.Department">
+        SELECT sd.dept_id AS departmentId, sd.department_name
+        from rule_dept_task rdt
+                 left JOIN sys_dept sd on sd.dept_id = rdt.department_id
+                 LEFT JOIN guide g on rdt.root_rule_id = g.root_rule_id
+        where rdt.lead_flag = 1
+          and g.guide_id = #{guideId}
+        GROUP BY sd.dept_id;
+    </select>
+</mapper>

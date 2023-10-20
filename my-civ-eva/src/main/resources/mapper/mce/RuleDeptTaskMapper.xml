@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.RuleDeptTaskMapper">
+
+    <resultMap id="ruleDeptTaskMap" type="cn.swust.indigo.mce.entity.po.RuleDeptTask">
+        <id column="task_id" property="taskId"/>
+        <result column="rule_id" property="ruleId"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="task_detail" property="taskDetail"/>
+        <result column="lead_flag" property="leadFlag"/>
+    </resultMap>
+
+    <resultMap id="commitRuleMap" type="cn.swust.indigo.mce.entity.vo.CommitRuleTableInfo">
+        <result column="department_id" property="departmentId"/>
+        <result column="rule_id" property="ruleId"/>
+        <result column="task_detail" property="taskDetail"/>
+        <result column="ruleLevel1Name" property="ruleLevel1Name"/>
+        <result column="ruleLevel2Name" property="ruleLevel2Name"/>
+        <result column="ruleLevel3Name" property="ruleLevel3Name"/>
+        <result column="ruleLevel4Name" property="ruleLevel4Name"/>
+        <result column="lead_flag" property="leadFlag"/>
+    </resultMap>
+
+
+    <resultMap id="ruleTaskMap" type="cn.swust.indigo.mce.entity.vo.RuleDeptTaskVo">
+        <result column="department_id" property="departmentId"/>
+        <result column="department_name" property="departmentName"/>
+        <result column="rule_id" property="ruleId"/>
+        <result column="task_detail" property="taskDetail"/>
+        <result column="ruleLevel1Id" property="ruleLevel1Id"/>
+        <result column="ruleLevel1Name" property="ruleLevel1Name"/>
+        <result column="ruleLevel2Id" property="ruleLevel2Id"/>
+        <result column="ruleLevel2Name" property="ruleLevel2Name"/>
+        <result column="ruleLevel3Id" property="ruleLevel3Id"/>
+        <result column="ruleLevel3Name" property="ruleLevel3Name"/>
+        <result column="ruleLevel4Id" property="ruleLevel4Id"/>
+        <result column="ruleLevel4Name" property="ruleLevel4Name"/>
+        <result column="lead_flag" property="leadFlag"/>
+        <result column="root_rule_id" property="rootRuleId"/>
+    </resultMap>
+    <select id="commitRuleList" resultMap="commitRuleMap">
+        select task_id,
+        r.rule_id,
+        task_detail,
+        lead_flag,
+        r.department_id,
+        e.rule_name as ruleLevel4Name
+        from rule_dept_task r
+        left join evaluation_rules e on r.rule_id = e.rule_id
+        where
+        r.root_rule_id = #{rootId}
+        <if test="userId != null">
+            and r.department_id in (select dept_id from sys_dept where leader_id = #{userId})
+        </if>
+        order by rule_id
+    </select>
+
+    <select id="getLeadDepartment" resultType="cn.swust.indigo.mce.entity.po.RuleDeptTask">
+        select * from sys_dept dept,rule_dept_task task
+        <where>
+            task.lead_flag = 0 and
+            <if test="userId != null">
+                dept.leader_id = #{userId}
+            </if>
+            dept.dept_id = task.department_id;
+        </where>
+    </select>
+
+
+    <select id="getAllSubordinateDepartments" resultType="cn.swust.indigo.mce.entity.vo.CommitRuleTableInfoVo">
+        SELECT count(cr.report_id) AS commitCount,
+               rdt.lead_flag       AS leadFlag,
+               rdt.task_id         AS taskId,
+               rdt.rule_id         AS ruleId,
+               rdt.task_detail     AS taskDetail,
+               rdt.department_id   AS departmentId,
+               sd.department_name  AS departmentName,
+               cr.commit_time      AS lastCommitTime,
+               cr.`status`         AS reportStatus,
+               cr.grade            AS Score
+        FROM rule_dept_task rdt
+                 LEFT JOIN sys_dept sd ON rdt.department_id = sd.dept_id
+                 LEFT JOIN guide g ON g.root_rule_id = rdt.root_rule_id AND g.guide_id = #{guideId}
+                 LEFT JOIN (SELECT * FROM commit_report where `status` >= 1) cr ON rdt.department_id = cr.department_id
+            AND rdt.rule_id = cr.rule_id
+            AND cr.guide_id = g.guide_id
+        WHERE rdt.root_rule_id = #{rootRuleId}
+        <if test='status != null and status != "0"'>
+            and cr.`status` = #{status}
+        </if>
+        <if test='status == "0" and status != null'>
+            and cr.`status` IS NULL
+        </if>
+        GROUP BY rdt.rule_id,
+                 rdt.department_id
+    </select>
+
+
+    <select id="listInfoRuleTask" resultMap="ruleTaskMap">
+        select task_id, rule_id, department_id, task_detail, lead_flag, root_rule_id
+        from rule_dept_task
+        where rule_id in
+        <foreach collection="list" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+
+    <select id="listRuleDeptTaskVo" resultType="cn.swust.indigo.mce.entity.vo.RuleDeptTaskVo">
+        SELECT e4.rule_id         AS ruleLevel4Id,
+               e4.rule_id         AS ruleId,
+               e3.rule_id         AS ruleLevel3Id,
+               e2.rule_id         AS ruleLevel2Id,
+               e1.rule_id         AS ruleLevel1Id,
+               e4.rule_name       AS ruleLevel4Name,
+               e3.rule_name       AS ruleLevel3Name,
+               e2.rule_name       AS ruleLevel2Name,
+               e1.rule_name       AS ruleLevel1Name,
+               rd.task_id         AS task_id,
+               rd.task_detail     AS taskDetail,
+               e4.root_rule_id    AS rootRuleId,
+               rd.department_id   AS departmentId,
+               sd.department_name AS departmentName,
+               rd.lead_flag       AS leadFlag
+        FROM evaluation_rules e4
+                 INNER JOIN evaluation_rules e3 ON e4.parent_id = e3.rule_id
+                 INNER JOIN evaluation_rules e2 ON e3.parent_id = e2.rule_id
+                 INNER JOIN evaluation_rules e1 ON e2.parent_id = e1.rule_id
+                 LEFT JOIN rule_dept_task rd ON e4.rule_id = rd.rule_id
+                 LEFT JOIN sys_dept sd ON rd.department_id = sd.dept_id
+        WHERE e1.rule_id NOT IN (SELECT root_rule_id FROM evaluation)
+          AND e4.root_rule_id = #{rootRuleId}
+          AND e4.rule_id = #{ruleId}
+        ORDER BY e4.rule_id,
+                 e3.rule_id,
+                 e2.rule_id,
+                 e1.rule_id;
+    </select>
+    <select id="listRuleDeptTaskVoByUser" resultType="cn.swust.indigo.mce.entity.vo.RuleDeptTaskVo">
+        SELECT e4.rule_id AS ruleLevel4Id,
+        e4.rule_id AS ruleId,
+        e3.rule_id AS ruleLevel3Id,
+        e2.rule_id AS ruleLevel2Id,
+        e1.rule_id AS ruleLevel1Id,
+        e4.rule_name AS ruleLevel4Name,
+        e3.rule_name AS ruleLevel3Name,
+        e2.rule_name AS ruleLevel2Name,
+        e1.rule_name AS ruleLevel1Name,
+        rd.task_id AS task_id,
+        rd.task_detail AS taskDetail,
+        e4.root_rule_id AS rootRuleId,
+        rd.department_id AS departmentId,
+        sd.department_name AS departmentName,
+        rd.lead_flag AS leadFlag
+        FROM evaluation_rules e4
+        INNER JOIN evaluation_rules e3 ON e4.parent_id = e3.rule_id
+        INNER JOIN evaluation_rules e2 ON e3.parent_id = e2.rule_id
+        INNER JOIN evaluation_rules e1 ON e2.parent_id = e1.rule_id
+        LEFT JOIN rule_dept_task rd ON e4.rule_id = rd.rule_id
+        LEFT JOIN sys_dept sd ON rd.department_id = sd.dept_id
+        WHERE e1.rule_id NOT IN (SELECT root_rule_id FROM evaluation)
+        AND e4.root_rule_id = #{rootRuleId}
+        AND rd.root_rule_id = #{rootRuleId}
+        <if test="userDeptId != null and userDeptId != ''">
+            AND e4.rule_id IN (SELECT rdt.rule_id FROM rule_dept_task rdt WHERE rdt.department_id = #{userDeptId})
+        </if>
+        ORDER BY e4.rule_id,
+        e3.rule_id,
+        e2.rule_id,
+        e1.rule_id;
+    </select>
+
+    <select id="listCommitRuleTableInfo" resultType="cn.swust.indigo.mce.entity.vo.CommitRuleTableInfo">
+        SELECT e4.rule_id AS ruleId,
+        e4.rule_name AS ruleLevel4Name,
+        e3.rule_name AS ruleLevel3Name,
+        e2.rule_name AS ruleLevel2Name,
+        e1.rule_name AS ruleLevel1Name,
+        rd.task_detail AS taskDetail,
+        rd.lead_flag AS leadFlag,
+        rd.task_id AS taskId,
+        sd.dept_id AS departmentId,
+        sd.department_name AS departmentName,
+        cr.commit_time AS commitTime,
+        cr.`status` AS reportStatus,
+        cr.report_id AS reportId
+        FROM evaluation_rules e4
+        INNER JOIN evaluation_rules e3 ON e4.parent_id = e3.rule_id
+        INNER JOIN evaluation_rules e2 ON e3.parent_id = e2.rule_id
+        INNER JOIN evaluation_rules e1 ON e2.parent_id = e1.rule_id
+        LEFT JOIN rule_dept_task rd ON e4.rule_id = rd.rule_id
+        LEFT JOIN sys_dept sd ON rd.department_id = sd.dept_id
+        LEFT JOIN
+        (SELECT report_id,
+        commit_time,
+        rule_id,
+        department_id,
+        guide_id,
+        `status`
+        FROM commit_report
+        where guide_id = #{guideId}
+        <if test="departmentId != null and departmentId != ''">
+            AND department_id = #{departmentId}
+        </if>
+        ) cr ON cr.department_id = sd.dept_id AND e4.rule_id= cr.rule_id
+        WHERE e4.level = 4
+        AND e4.root_rule_id = #{rootRuleId}
+        <if test="ruleId != null and ruleId != ''">
+            AND e4.rule_id = #{ruleId}
+        </if>
+        <if test="departmentId != null and departmentId != ''">
+            AND sd.dept_id = #{departmentId}
+        </if>
+        ORDER BY rd.task_id DESC,
+        e4.rule_id,
+        e3.rule_id,
+        e2.rule_id,
+        e1.rule_id;
+    </select>
+
+    <select id="listRuleDeptTaskVoByUserAll" resultType="cn.swust.indigo.mce.entity.vo.RuleDeptTaskVo">
+        SELECT e4.rule_id         AS ruleLevel4Id,
+               e4.rule_id         AS ruleId,
+               e3.rule_id         AS ruleLevel3Id,
+               e2.rule_id         AS ruleLevel2Id,
+               e1.rule_id         AS ruleLevel1Id,
+               e4.rule_name       AS ruleLevel4Name,
+               e3.rule_name       AS ruleLevel3Name,
+               e2.rule_name       AS ruleLevel2Name,
+               e1.rule_name       AS ruleLevel1Name,
+               rd.task_id         AS task_id,
+               rd.task_detail     AS taskDetail,
+               e4.root_rule_id    AS rootRuleId,
+               rd.department_id   AS departmentId,
+               sd.department_name AS departmentName,
+               rd.lead_flag       AS leadFlag
+        FROM evaluation_rules e4
+                 INNER JOIN evaluation_rules e3 ON e4.parent_id = e3.rule_id
+                 INNER JOIN evaluation_rules e2 ON e3.parent_id = e2.rule_id
+                 INNER JOIN evaluation_rules e1 ON e2.parent_id = e1.rule_id
+                 LEFT JOIN rule_dept_task rd ON e4.rule_id = rd.rule_id
+                 LEFT JOIN sys_dept sd ON rd.department_id = sd.dept_id
+        WHERE e1.rule_id NOT IN (SELECT root_rule_id FROM evaluation)
+            AND e4.root_rule_id = #{rootRuleId}
+            AND e4.rule_id IN (SELECT rdt.rule_id
+                               FROM rule_dept_task rdt
+                               WHERE rdt.department_id = #{userDeptId}
+                                 AND rdt.lead_flag = 1)
+           OR (e4.root_rule_id IN (SELECT rdt.rule_id
+                                   FROM rule_dept_task rdt
+                                   WHERE rdt.department_id = #{userDeptId}
+                                     AND rdt.lead_flag = 0) AND
+               rd.department_id = #{userDeptId}
+            )
+        ORDER BY e4.rule_id,
+                 e3.rule_id,
+                 e2.rule_id,
+                 e1.rule_id;
+    </select>
+
+    <select id="getAllLeadDepartment" resultType="cn.swust.indigo.mce.entity.vo.RuleDeptTaskVo">
+        SELECT e4.rule_id         AS ruleLevel4Id,
+
+               e3.rule_id         AS ruleLevel3Id,
+               e2.rule_id         AS ruleLevel2Id,
+               e1.rule_id         AS ruleLevel1Id,
+               e4.rule_name       AS ruleLevel4Name,
+               e3.rule_name       AS ruleLevel3Name,
+               e2.rule_name       AS ruleLevel2Name,
+               e1.rule_name       AS ruleLevel1Name,
+               rd.task_id         AS task_id,
+               rd.task_detail     AS taskDetail,
+               e4.root_rule_id    AS rootRuleId,
+               rd.department_id   AS departmentId,
+               sd.department_name AS departmentName,
+               rd.lead_flag       AS leadFlag
+        FROM evaluation_rules e4
+                 INNER JOIN evaluation_rules e3 ON e4.parent_id = e3.rule_id
+                 INNER JOIN evaluation_rules e2 ON e3.parent_id = e2.rule_id
+                 INNER JOIN evaluation_rules e1 ON e2.parent_id = e1.rule_id
+                 LEFT JOIN rule_dept_task rd ON e4.rule_id = rd.rule_id
+                 LEFT JOIN sys_dept sd ON rd.department_id = sd.dept_id
+        WHERE e1.rule_id NOT IN (SELECT root_rule_id FROM evaluation)
+          AND e4.root_rule_id = #{rootRuleId}
+          AND rd.lead_flag = 1
+          AND e4.rule_id = #{ruleId}
+          AND rd.root_rule_id = #{rootRuleId}
+        ORDER BY e4.rule_id,
+                 e3.rule_id,
+                 e2.rule_id,
+                 e1.rule_id;
+    </select>
+    <select id="selectTaskCommits" resultType="cn.swust.indigo.mce.entity.vo.TaskCheckCommit">
+        select count(tc.task_commit_id) as commitCount, rt.task_id, sd.department_name
+        from rule_dept_task rt
+                 LEFT JOIN task_commit tc on tc.task_id = rt.task_id
+                 LEFT JOIN sys_dept sd on rt.department_id = sd.dept_id
+        where rt.root_rule_id = #{rootRuleId}
+        GROUP BY rt.task_id
+    </select>
+
+</mapper>

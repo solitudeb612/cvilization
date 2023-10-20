@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.CheckGroupCriteriaMapper">
+
+    <resultMap id="checkGroupCriteriaMap" type="cn.swust.indigo.mce.entity.vo.CheckGroupCriteria">
+        <id column="group_criteria_id" property="group_criteria_id"/>
+        <result column="group_id" property="group_id"/>
+        <result column="criteria_name" property="criteria_name"/>
+        <result column="method" property="method"/>
+
+
+         <collection property="criteriaContentlist" ofType="cn.swust.indigo.mce.entity.vo.CheckCriteriaContent">
+             <id column="criteria_content_id" property="criteria_content_id"></id>
+             <result column="group_criteria_id" property="group_criteria_id"></result>
+             <result column="criteria_content" property="criteria_content"></result>
+        </collection>
+
+        <collection property="checkRuleDetailList" ofType="cn.swust.indigo.mce.entity.vo.CheckRuleDetail">
+            <result column="sort" property="sort"></result>
+            <result column="number" property="number"></result>
+            <result column="score" property="score"></result>
+            <result column="rule_detail" property="rule_detail"></result>
+        </collection>
+    </resultMap>
+
+
+
+    <select id="list" resultMap="checkGroupCriteriaMap">
+        select
+            check_group_criteria.group_criteria_id,
+            check_group_criteria.group_id,
+            check_group_criteria.criteria_name,
+            check_group_criteria.method,
+
+            check_criteria_content.*,
+            check_group_rule.sort,
+            check_group_rule.number,
+            check_group_rule.score,
+            check_group_rule.rule_detail
+        from check_group_criteria
+                 inner join check_criteria_content on check_group_criteria.group_criteria_id = check_criteria_content.group_criteria_id
+                 left join check_group_rule on check_group_rule.group_criteria_id = check_group_criteria.group_criteria_id
+        where check_group_criteria.group_id = #{group_id}
+    </select>
+
+
+</mapper>

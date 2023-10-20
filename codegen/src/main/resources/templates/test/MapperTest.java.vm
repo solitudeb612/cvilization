@@ -1,0 +1,70 @@
+package ${package}.${moduleName}.mapper;
+
+import com.alibaba.fastjson.JSON;
+import ${package}.${moduleName}.mapper.${className}Mapper;
+import ${package}.${moduleName}.entity.${className};
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+
+import static junit.framework.TestCase.fail;
+import static org.junit.Assert.assertEquals;
+
+/**
+ * 测试${className}Mapper
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class ${className}MapperTest {
+
+    @Autowired
+    private ${className}Mapper mapper;
+
+    /**
+     * 新增
+     */
+    @Test
+    public void saveMapper() {
+        ${className} ${classname} = new ${className}();
+	    ${classname}.se
+        mapper.insert(${classname});
+        Assert.assertNotNull(q${className}.ge);
+        fail("请实现${className}MapperTest 新增" );
+    }
+
+    /**
+     * 修改
+     */
+    @Test
+    public void editMapper() {
+        ${className} ${classname} =mapper.selectById();
+	    ${classname}.se
+        mapper.updateById(${classname});
+        Assert.assertNotNull(${classname}.ge);
+        fail("请实现${className}MapperTest 修改" );
+    }
+
+    /**
+     * 通过id查询
+     */
+    @Test
+    public void getMapper() {
+        ${className} ${classname} =mapper.selectById();
+        System.out.println(JSON.toJSONString(${classname}));
+        fail("请实现${className}MapperTest Id查询" );
+    }
+
+    /**
+     *删除
+     */
+    @Test
+    public void delMapper() {
+        int result = mapper.deleteById();
+        assertEquals(result, 1);
+        fail("请实现${className}MapperTest 删除" );
+    }
+}

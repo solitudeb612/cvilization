@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.CheckReportMapper">
+
+    <resultMap id="checkReportMap" type="cn.swust.indigo.mce.entity.po.CheckReport">
+        <id column="check_report_id" property="checkReportId"/>
+        <result column="check_id" property="checkId"/>
+        <result column="check_group_id" property="checkGroupId"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="main_department_id" property="mainDepartmentId"/>
+        <result column="guidance_department_id" property="guidanceDepartmentId"/>
+        <result column="report_name" property="reportName"/>
+        <result column="status" property="status"/>
+        <result column="memo" property="memo"/>
+        <result column="passed_count" property="passedCount"/>
+        <result column="fail_count" property="failCount"/>
+        <result column="creator_id" property="creatorId"/>
+        <result column="updater_id" property="updaterId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="commit_time" property="commitTime"/>
+        <result column="address" property="address"/>
+        <result column="commit_device" property="commitDevice"/>
+        <association property="departmentName" column="department_id" select="cn.swust.indigo.admin.mapper.SysDeptMapper.getDeptName"/>
+        <association property="mainDepartmentName" column="main_department_id" select="cn.swust.indigo.admin.mapper.SysDeptMapper.getDeptName"/>
+        <association property="guidanceDepartmentName" column="guidance_department_id" select="cn.swust.indigo.admin.mapper.SysDeptMapper.getDeptName"/>
+    </resultMap>
+</mapper>

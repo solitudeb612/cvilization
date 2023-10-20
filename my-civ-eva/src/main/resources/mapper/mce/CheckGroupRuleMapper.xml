@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.CheckGroupRuleMapper">
+
+    <resultMap id="checkGroupRuleMap" type="cn.swust.indigo.mce.entity.po.CheckGroupRule">
+        <id column="group_rule_id" property="groupRuleId"/>
+        <result column="group_id" property="groupId"/>
+        <result column="rule_name" property="ruleName"/>
+        <result column="rule_detail" property="ruleDetail"/>
+        <result column="sort" property="sort"/>
+        <result column="weight" property="weight"/>
+        <result column="score" property="score"/>
+        <result column="memo" property="memo"/>
+        <result column="number" property="number"/>
+    </resultMap>
+
+    <resultMap id="checkGroupCriteriaMap" type="cn.swust.indigo.mce.entity.vo.CheckGroupCriteria">
+        <id column="group_criteria_id" property="group_criteria_id"/>
+        <result column="group_id" property="group_id"/>
+        <result column="criteria_name" property="criteria_name"/>
+        <result column="method" property="method"/>
+
+
+        <collection property="criteriaContentlist" ofType="cn.swust.indigo.mce.entity.vo.CheckCriteriaContent">
+            <id column="criteria_content_id" property="criteria_content_id"></id>
+            <result column="group_criteria_id" property="group_criteria_id"></result>
+            <result column="criteria_content" property="criteria_content"></result>
+        </collection>
+
+        <collection property="checkRuleDetailList" ofType="cn.swust.indigo.mce.entity.vo.CheckRuleDetail">
+            <result column="group_rule_id" property="group_rule_id"></result>
+            <result column="sort" property="sort"></result>
+            <result column="number" property="number"></result>
+            <result column="score" property="score"></result>
+            <result column="rule_detail" property="rule_detail"></result>
+        </collection>
+    </resultMap>
+
+    <select id="checkDeptRule" resultMap="checkGroupRuleMap">
+        select cgr.*
+        from self_check sc
+                 LEFT JOIN check_plan_detail cpd ON sc.check_plan_id = cpd.check_plan_id
+                 LEFT JOIN check_group_rule cgr ON cpd.check_group_id = cgr.group_id
+        WHERE sc.check_id = #{checkId}
+          and cpd.department_id = #{DeptId}
+    </select>
+
+    <select id="getRuleDetails" resultMap="checkGroupCriteriaMap">
+        SELECT
+            check_group_rule.group_rule_id,
+            check_group_rule.number,
+            check_group_rule.sort,
+            check_group_rule.score,
+            check_group_rule.rule_detail,
+            check_group_criteria.group_criteria_id,
+            check_group_criteria.group_id,
+            check_group_criteria.criteria_name,
+            check_group_criteria.method,
+            check_criteria_content.*
+        FROM
+            check_group_rule
+                INNER JOIN
+            check_group_criteria ON check_group_rule.group_criteria_id = check_group_criteria.group_criteria_id
+                INNER JOIN
+            check_criteria_content ON check_group_rule.group_criteria_id = check_criteria_content.group_criteria_id
+        WHERE
+            check_group_rule.group_rule_id = #{group_rule_id}
+
+    </select>
+
+    <update id="updateById" parameterType="cn.swust.indigo.mce.entity.vo.CheckGroupCriteria">
+        <!-- 更新 check_group_rule 表 -->
+        <foreach collection="checkRuleDetailList" item="ruleDetail" separator=";">
+            UPDATE check_group_rule
+            SET
+            number = #{ruleDetail.number},
+            sort = #{ruleDetail.sort},
+            score = #{ruleDetail.score},
+            rule_detail = #{ruleDetail.rule_detail}
+            WHERE group_rule_id = #{ruleDetail.group_rule_id}
+        </foreach>
+
+        <!-- 更新 check_criteria_content 表 -->
+        <foreach collection="criteriaContentlist" item="criteriaContent" separator=";">
+            UPDATE check_criteria_content
+            SET
+            criteria_content = #{criteriaContent.criteria_content}
+            WHERE criteria_content_id = #{criteriaContent.criteria_content_id}
+        </foreach>
+
+        <!-- 更新 check_group_criteria 表的 criteria_name -->
+        UPDATE check_group_criteria
+        SET
+        criteria_name = #{criteria_name},
+        method = #{method},
+        weight = #{weight}
+        WHERE group_criteria_id = #{group_criteria_id}
+    </update>
+
+
+</mapper>

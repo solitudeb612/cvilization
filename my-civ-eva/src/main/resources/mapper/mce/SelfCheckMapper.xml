@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.SelfCheckMapper">
+
+    <resultMap id="selfCheckMap" type="cn.swust.indigo.mce.entity.po.SelfCheck">
+        <id column="check_id" property="checkId"/>
+        <result column="check_name" property="checkName"/>
+        <result column="check_brief" property="checkBrief"/>
+        <result column="begin_time" property="beginTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="status" property="status"/>
+        <result column="memo" property="memo"/>
+        <result column="material_ids" property="materialIds"/>
+        <result column="creator_id" property="creatorId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="updater_id" property="updaterId"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="publish_time" property="publishTime"/>
+    </resultMap>
+
+</mapper>

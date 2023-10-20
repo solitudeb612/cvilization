@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.swust.indigo.admin.mapper.SysDeptMapper">
+
+    <resultMap type="cn.swust.indigo.admin.entity.po.SysDept" id="BaseResultMap">
+        <id column="dept_id" property="deptId"/>
+        <result column="sort" property="sort"/>
+        <result column="department_name" property="name"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="department_type" property="type"/>
+        <result column="leader_id" property="leaderId"/>
+    </resultMap>
+
+    <resultMap type="cn.swust.indigo.admin.entity.vo.SysDeptVo" id="SysDeptVoResultMap">
+        <id column="dept_id" property="deptId"/>
+        <result column="department_name" property="name"/>
+        <result column="department_py" property="departmentPy"/>
+        <result column="sort" property="sort"/>
+        <result column="create_time" property="createTime"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="department_type" property="type"/>
+        <result column="leader_id" property="leaderId"/>
+        <result column="phone" property="phone"/>
+    </resultMap>
+
+    
+
+    <select id="getDeptPageVoWithName" resultMap="SysDeptVoResultMap">
+        SELECT d.dept_id,
+               d.department_name,
+               d.department_py,
+               d.parent_id,
+               d.create_time,
+               d.del_flag,
+               d.department_type,
+               d.sort,
+               d.phone,
+               u.nickname
+        FROM sys_dept d
+                 LEFT JOIN sys_user u on d.leader_id = u.user_id
+        WHERE d.department_name LIKE #{deptName}
+          AND u.nickname LIKE #{leadName}
+          AND d.department_py LIKE #{departmentPy}
+    </select>
+
+    <select id="getDeptPageVo" resultType="cn.swust.indigo.admin.entity.vo.SysDeptVo">
+        SELECT sys_dept.dept_id,
+               sys_dept.department_name,
+               sys_dept.department_py,
+               sys_dept.parent_id,
+               sys_dept.create_time,
+               sys_dept.del_flag,
+               sys_dept.department_type,
+               sys_dept.sort,
+               sys_dept.phone,
+               sys_user.nickname
+        FROM sys_dept
+                 LEFT JOIN
+             sys_user
+             ON
+                 sys_dept.leader_id = sys_user.user_id
+    </select>
+
+    <select id="getDeptVo" resultType="cn.swust.indigo.admin.entity.vo.SysDeptVo">
+        SELECT sys_dept.dept_id,
+               sys_dept.department_name,
+               sys_dept.department_py,
+               sys_dept.parent_id,
+               sys_dept.create_time,
+               sys_dept.del_flag,
+               sys_dept.department_type,
+               sys_dept.sort,
+               sys_dept.phone,
+               sys_user.nickname
+        FROM sys_dept
+                 LEFT JOIN
+             sys_user
+             ON
+                 sys_dept.leader_id = sys_user.user_id
+    </select>
+
+    <select id = "selectSysDeptVoPage" resultType="cn.swust.indigo.admin.entity.vo.SysDeptVo">
+        SELECT d.dept_id,
+               d.department_name,
+               d.department_py,
+               d.parent_id,
+               d.create_time,
+               d.del_flag,
+               d.department_type,
+               d.sort,
+               d.phone,
+               u.nickname
+        FROM sys_dept d
+        LEFT JOIN sys_user u on d.leader_id = u.user_id
+    </select>
+
+    <!--    <sql id="userRoleDeptSql">-->
+    <!--         dept_id,name,sort,create_time,update_time,del_flag,parent_id-->
+    <!--	</sql>-->
+</mapper>

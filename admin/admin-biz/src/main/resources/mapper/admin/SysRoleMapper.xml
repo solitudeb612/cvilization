@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.swust.indigo.admin.mapper.SysRoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.swust.indigo.admin.entity.po.SysRole">
+        <id column="role_id" property="roleId"/>
+        <result column="role_name" property="roleName"/>
+
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+
+    </resultMap>
+
+    <!-- 通过用户ID，查询角色信息-->
+    <select id="listRolesByUserId" resultMap="BaseResultMap">
+        SELECT
+            r.*
+        FROM
+        sys_role r, sys_user_role ur WHERE r.role_id = ur.role_id and ur.user_id IN (#{userId})
+    </select>
+    <select id="findRoleNameByUserId" resultType="string">
+        select
+            role.role_name
+        from
+            sys_role role,sys_user_role where role.role_id = sys_user_role.role_id and
+            sys_user_role.user_id	= #{userId};
+    </select>
+</mapper>

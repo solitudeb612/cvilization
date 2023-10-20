@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.EvaluationMapper">
+    <resultMap id="evaluationUsed" type="cn.swust.indigo.mce.entity.vo.EvaluationUseCountVo">
+        <result column="usedCount" property="usedCount"/>
+        <result column="root_rule_Id" property="rootRuleId"/>
+        <result column="rule_name" property="ruleName"/>
+    </resultMap>
+
+    <select id="listUsed" resultMap="evaluationUsed">
+        select * from evaluation as e left join
+            (select root_rule_id, COUNT(*) as usedCount from guide where status &gt;0 GROUP BY root_rule_id) a
+                on a.root_rule_id = e.root_rule_id
+            order by e.root_rule_id desc
+    </select>
+
+</mapper>

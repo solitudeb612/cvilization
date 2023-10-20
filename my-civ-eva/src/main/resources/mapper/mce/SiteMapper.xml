@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.swust.indigo.mce.mapper.SiteMapper">
+
+    <resultMap id="siteMap" type="cn.swust.indigo.mce.entity.po.Site">
+        <id column="id" property="siteId"/>
+        <result column="site_id" property="siteId"/>
+        <result column="name" property="name"/>
+        <result column="site_py" property="sitePy"/>
+        <result column="longitude" property="longitude"/>
+        <result column="latitude" property="latitude"/>
+        <result column="address" property="address"/>
+        <result column="leader_id" property="leaderId"/>
+        <result column="department_id" property="departmentId"/>
+    </resultMap>
+
+    <select id="getSiteVoList" resultType="cn.swust.indigo.mce.entity.vo.SiteVo">
+        SELECT s.site_id,
+        s.name,
+        s.site_py,
+        s.longitude,
+        s.latitude,
+        s.address,
+        s.leader_id,
+        s.department_id,
+        s.del_flag,
+        s.introduce,
+        s.mini_picture as thumbnail,
+        su.nickname as leaderName,
+        su.phone as phoneNumber,
+        su.telephone AS telephoneNumber,
+        sd.department_name as departmentName
+        FROM site AS s
+        LEFT JOIN sys_user AS su ON s.leader_id = su.user_id
+        LEFT JOIN sys_dept AS sd ON s.department_id = sd.dept_id
+        <where>
+            s.del_flag = 0
+            <if test="longitude != null and longitude != ''">
+                and s.longitude LIKE CONCAT('%',#{latitude},'%')
+            </if>
+            <if test="latitude != null and latitude != ''">
+                and s.latitude LIKE CONCAT('%',#{latitude},'%')
+            </if>
+            <if test="sitePy != null and sitePy != ''">
+                and s.site_py LIKE CONCAT('%',#{sitePy},'%')
+            </if>
+            <if test="leaderName != null and leaderName != ''">
+                and su.nickname LIKE CONCAT('%',#{leaderName},'%')
+            </if>
+        </where>
+    </select>
+    <select id="getSiteVoById" resultType="cn.swust.indigo.mce.entity.vo.SiteVo">
+        SELECT s.site_id,
+               s.name,
+               s.site_py,
+               s.longitude,
+               s.latitude,
+               s.address,
+               s.leader_id,
+               s.department_id,
+               s.del_flag,
+               s.introduce,
+               s.mini_picture     as thumbnail,
+               su.nickname        as leaderName,
+               su.phone       as phoneNumber,
+               su.telephone AS telephoneNumber,
+               sd.department_name as departmentName
+        FROM site AS s
+                 LEFT JOIN sys_user AS su ON s.leader_id = su.user_id
+                 LEFT JOIN sys_dept AS sd ON s.department_id = sd.dept_id
+        WHERE s.site_id = #{siteId}
+          AND s.del_flag = 0
+    </select>
+
+    <select id="getAll" resultType="cn.swust.indigo.mce.entity.vo.SiteVo">
+        SELECT s.site_id,
+        s.name,
+        s.site_py,
+        s.longitude,
+        s.latitude,
+        s.address,
+        s.leader_id,
+        s.department_id,
+        s.del_flag,
+        s.introduce,
+        s.mini_picture as thumbnail,
+        su.nickname as leaderName,
+        su.telephone as phoneNumber,
+        su.telephone AS telephoneNumber,
+        sd.department_name as departmentName
+        FROM site AS s
+        LEFT JOIN sys_user AS su ON s.leader_id = su.user_id
+        LEFT JOIN sys_dept AS sd ON s.department_id = sd.dept_id
+        <where>
+            s.del_flag = 0
+        </where>
+    </select>
+    <select id="getSiteVoByLeaderId" resultType="cn.swust.indigo.mce.entity.vo.SiteVo">
+        SELECT s.site_id,
+        s.name,
+        s.site_py,
+        s.longitude,
+        s.latitude,
+        s.address,
+        s.leader_id,
+        s.department_id,
+        s.del_flag,
+        s.introduce,
+        s.mini_picture as thumbnail,
+        su.nickname as leaderName,
+        su.telephone as phoneNumber,
+        su.telephone AS telephoneNumber,
+        sd.department_name as departmentName
+        FROM site AS s
+        LEFT JOIN sys_user AS su ON s.leader_id = su.user_id
+        LEFT JOIN sys_dept AS sd ON s.department_id = sd.dept_id
+        <where>
+            s.del_flag = 0
+            AND s.leader_id = #{leaderId}
+        </where>
+    </select>
+</mapper>

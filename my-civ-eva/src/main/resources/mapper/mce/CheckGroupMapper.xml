@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.swust.indigo.mce.mapper.CheckGroupMapper">
+
+    <resultMap id="BaseResultMap" type="cn.swust.indigo.mce.entity.po.CheckGroup">
+        <id property="checkGroupId" column="check_group_id" jdbcType="INTEGER"/>
+        <result property="groupName" column="group_name" jdbcType="VARCHAR"/>
+        <result property="groupPy" column="group_py" jdbcType="VARCHAR"/>
+        <result property="memo" column="memo" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        check_group_id,group_name,group_py,
+        memo
+    </sql>
+    <select id="selectSiteDetail" resultType="cn.swust.indigo.mce.entity.vo.SiteDetail">
+        select cpd.site_id as siteId,cpd.check_group_id as  checkGroupId
+             , s.`name` as name, cg.group_name as groupName from check_plan_detail cpd
+        left join site s on cpd.site_id = s.site_id
+        left join check_group cg on cpd.check_group_id = cg.check_group_id
+        where cpd.check_plan_id = #{checkPlanId} and cpd.site_id
+        in (select site_id from site where site.department_id = #{departmentId});
+    </select>
+    <select id="findSiteCountAndLastTime" resultType="cn.swust.indigo.mce.entity.vo.CheckReportVo">
+        SELECT count(*) as count,MAX(commit_time) as commitTime ,site_id, check_group_id
+        from check_report cr WHERE cr.site_id in (select site_id from site where site.department_id = #{departmentId})
+                               and status >= 1 and  check_id = #{checkId} group by site_id, check_group_id
+                               ;
+    </select>
+    <select id="selectDeptDetail" resultType="cn.swust.indigo.mce.entity.po.DeptDetail">
+        select  cpd.site_id as siteId,cpd.check_group_id as  checkGroupId
+             , dept.dept_id  as deptId, cg.group_name, dept.department_name as name
+        from check_plan_detail cpd
+        left join check_group cg on cpd.check_group_id = cg.check_group_id
+        left join sys_dept dept on cpd.department_id = dept.dept_id
+        where cpd.check_plan_id = #{checkPlanId} and cpd.department_id in
+        (SELECT sd.dept_id FROM sys_dept sd WHERE sd.parent_id = #{departmentId});
+    </select>
+    <select id="findDeptCountAndLastTime" resultType="cn.swust.indigo.mce.entity.vo.CheckReportVo">
+        SELECT count(*) as count,MAX(commit_time) as commitTime,department_id, check_group_id
+        from check_report cr WHERE cr.department_id in
+                                   (SELECT sd.dept_id FROM sys_dept sd WHERE sd.parent_id = #{departmentId})
+                               and status >= 1 and  check_id = #{checkId} group by department_id, check_group_id
+       ;
+    </select>
+
+</mapper>
